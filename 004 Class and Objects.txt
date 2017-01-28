@@ -1,0 +1,892 @@
+1.
+In the previous exercise all the operations were done in a single class called Main. Now let's move on to object orientated programming.
+ 
+To start with, Let this program concentrate on registering a customer and updating his/her email, if required.
+ 
+Here customer is an object. So we are going to create a Customer class, with the attributes related to Customer as its data members, and all the operations related to the Customer as its member functions.
+ 
+ 
+Create a class Customer with the following data members
+ 
+   firstName, lastName, contactNumber, eMail, proofType, proofId
+ 
+and member functions
+ 
+registerCustomer()  //Add required parameters to the methods defined.
+display()
+updateEmail(String eMail)
+ 
+ 
+Create a Main class to get the input from the user and do the operations.
+ 
+Sample Input output format:
+ 
+Registration:
+ 
+Enter the customer details:
+Enter the first name:
+Sasi
+Enter the last name:
+Dharan
+Enter the contact number:
+123412345
+Enter the e-mail id:
+Sasi@gmail.com
+Enter the proof type:
+Student ID
+Enter the proof id:
+12pb05
+Thank you for registering. Your id is 1..
+The customer details are as follows
+The customer details are:
+First Name : Sasi
+Last Name : Dharan
+COntact Number : 123412345
+E-Mail : Sasi@gmail.com
+Proof Type : Student ID
+Proof ID : 12pb05
+Do you want to update email?(y/n)
+y
+Enter the new email:
+sasinarmi@gmail.com
+Email updated.
+The customer details are as follows
+The customer details are:
+First Name : Sasi
+Last Name : Dharan
+COntact Number : 123412345
+E-Mail : sasinarmi@gmail.com
+Proof Type : Student ID
+Proof ID : 12pb05
+Thank You
+
+soln - 
+
+using System;
+086
+using System.Collections.Generic;
+087
+using System.Linq;
+088
+using System.Text;
+089
+using System.Threading.Tasks;
+090
+  
+091
+namespace Ebox2
+092
+{
+093
+    class Program1
+094
+    {
+095
+        static string name, lname, contact, email, prooft, proofid;
+096
+        static int count = 1;
+097
+        static void registerCustomer()
+098
+        {
+099
+            Console.WriteLine("Registration:");
+100
+            Console.WriteLine();
+101
+            Console.WriteLine("Enter the customer details:");
+102
+  
+103
+            Console.WriteLine("Enter the first name:");
+104
+            name = Console.ReadLine();
+105
+            Console.WriteLine("Enter the last name:");
+106
+            lname = Console.ReadLine();
+107
+            Console.WriteLine("Enter the contact number:");
+108
+            contact = Console.ReadLine();
+109
+            Console.WriteLine("Enter the e-mail id:");
+110
+            email = Console.ReadLine();
+111
+            Console.WriteLine("Enter the proof type:");
+112
+            prooft = Console.ReadLine();
+113
+            Console.WriteLine("Enter the proof id:");
+114
+            proofid = Console.ReadLine();
+115
+  
+116
+            Console.WriteLine("Thank you for registering. Your id is " + (count++) + "..");
+117
+            display();
+118
+        }
+119
+        static void display()
+120
+        {
+121
+            Console.WriteLine("The customer details are as follows");
+122
+            Console.WriteLine("The customer details are:");
+123
+            Console.WriteLine("First Name : " + name);
+124
+            Console.WriteLine("Last Name : " + lname);
+125
+            Console.WriteLine("Contact Number : " + contact);
+126
+            Console.WriteLine("E-Mail : " + email);
+127
+            Console.WriteLine("Proof Type : " + prooft);
+128
+            Console.WriteLine("Proof ID : " + proofid);
+129
+        }
+130
+        static void updateEmail(String eMail)
+131
+        {
+132
+            email = eMail;
+133
+            Console.WriteLine("Email updated.");
+134
+            display();
+135
+        }
+136
+  
+137
+        static void Main(string[] args)
+138
+        {
+139
+  
+140
+  
+141
+            registerCustomer();
+142
+            Console.WriteLine("Do you want to update email?(y/n)");
+143
+            if (Console.ReadLine().Equals("y"))
+144
+            {
+145
+                Console.WriteLine("Enter the new email:");
+146
+                updateEmail(Console.ReadLine());
+147
+            }
+148
+            Console.WriteLine("Thank You");
+149
+  
+150
+        }
+151
+    }
+152
+}
+
+
+2. Using the previous exercise, we can register any number of customers by iterating the process.
+ 
+In this exercise we will be learning how to add multiple objects and storing it in a list.
+ 
+Lets come to the problem. Supose that you have a hotel. You need to add multiple rooms in that hotel.
+ 
+So, the classes needed to be defined are Hotel and Room.
+ 
+Hotel will have multiple rooms. So we'll have room list in the hotel class.
+ 
+Create a class Hotel with the following field name:
+Name
+Hotel Id
+Address
+Room List
+and member functions
+ 
+addRoom – with room object as argument
+display
+ 
+After creating the Hotel class, we need to design the Room class. The addRoom() method in the hotel class should add the new room to the room list.
+ 
+The Room class is defined below.
+ 
+Create a class Room with the following field names:
+Room Id
+Room Id
+RoomType
+Room Number
+Room Capacity
+Room Ac
+Room Wifi
+Room Cabel
+Room Laundry
+and a constructor with all the data members as arguments.
+
+After getting the room details from the user, add them to the Room list in the Hotel class. 
+
+Sample Input and Output:
+ 
+Enter the Hotel details:
+Enter the Hotel Name:
+Taj
+Enter the Hotel ID:
+1
+Enter the Hotel Address
+Mumbai
+Enter the Room Details:
+Enter the Room Id:
+1
+Enter the Room Number:
+101
+Enter the Room Type:
+1)Normal
+2)Delux
+3)Super Delux
+1
+Enter the Room Capacity:(1/2/3/4)
+1
+AC Service (true/false):
+true
+Wi-Fi Service (true/false):
+false
+Cable Service (true/false):
+true
+Laundry Service (true/false):
+true
+Do you want to add Another Room (yes/no):
+yes
+Enter the Room Details:
+Enter the Room Id:
+2
+Enter the Room Number:
+102
+Enter the Room Type:
+1)Normal
+2)Delux
+3)Super Delux
+2
+Enter the Room Capacity:(1/2/3/4)
+2
+AC Service (true/false):
+false
+Wi-Fi Service (true/false):
+true
+Cable Service (true/false):
+false
+Laundry Service (true/false):
+true
+Do you want to add Another Room (yes/no):
+no
+Thank you for booking !!
+The rooms Details in Taj :
+Hotel Name:Taj.
+Hotel ID:1.
+Hotel Address:Mumbai.
+ 
+Room Details:
+ 
+Room Number :101
+Room Type :Normal
+Services Available:
+AC
+Cable Connection
+Laundry
+ 
+Room Number :102
+Room Type :Delux
+Services Available:
+Wi-Fi
+Laundry
+ 
+
+soln - 
+
+  using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LoopingStat
+{
+    class Hotel
+    {
+        public string Name, Address;
+        public string Hotel_Id;
+        public List<Room> Room_List = new List<Room>();
+        public void addRoom(Room room)
+        {
+            Room_List.Add(room);
+        }
+        public void display()
+        {
+            Console.WriteLine("Thank you for booking !!");
+            Console.WriteLine("The rooms Details in {0} :", Name);
+            Console.WriteLine("Hotel Name:{0}.", Name);
+            Console.WriteLine("Hotel ID:{0}.", Hotel_Id);
+            Console.WriteLine("Hotel Address:{0}.", Address);
+            Console.WriteLine();
+            Console.WriteLine("Room Details:");
+            Console.WriteLine();
+            foreach (Room room in Room_List)
+            {
+                Console.WriteLine("Room Number :{0}", room.Room_Number);
+                Console.Write("Room Type :");
+                if (room.RoomType == 1) { Console.WriteLine("Normal"); }
+                else if (room.RoomType == 2) { Console.WriteLine("Delux"); }
+                else { Console.WriteLine("Super Delux"); }
+                Console.WriteLine("Services Available:");
+                if (room.Room_Ac) { Console.WriteLine("AC"); }
+                if (room.Room_Wifi) { Console.WriteLine("Wifi"); }
+                if (room.Room_Cabel) { Console.WriteLine("Cable Connection"); }
+                if (room.Room_Laundry) { Console.WriteLine("Laundry"); }
+                Console.WriteLine();
+            }
+        }
+    }
+    class Room : Hotel
+    {
+        public int Roo.
+0..............00000000000000000000000000000000000000000000000000000000000000m_Id, RoomType, Room_Number, Room_Capacity;
+        public bool Room_Ac, Room_Wifi, Room_Cabel, Room_Laundry;
+        public Room(int room_id, int room_type, int room_number, int room_capacity, bool ac, bool wifi, bool cabel, bool laundry)
+        {
+            Room_Id = room_id;
+            RoomType = room_type;
+            Room_Number = room_number;
+            Room_Capacity = room_capacity;
+            Room_Ac = ac;
+            Room_Wifi = wifi;
+            Room_Cabel = cabel;
+            Room_Laundry = laundry;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Hotel hotel = new Hotel();
+            string ch = null;
+            int room_id, room_number, room_type, room_capacity;
+            bool ac, wifi, cable, laundry;
+            Console.WriteLine("Enter the Hotel details:");
+            Console.WriteLine("Enter the Hotel Name:");
+            hotel.Name = Console.ReadLine();
+            Console.WriteLine("Enter the Hotel ID:");
+            hotel.Hotel_Id = Console.ReadLine();
+            Console.WriteLine("Enter the Hotel Address:");
+            hotel.Address = Console.ReadLine();
+            Console.WriteLine("Enter the Room Details:");
+            do
+            {
+                Console.WriteLine("Enter the Room Id:");
+                room_id = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Number:");
+                room_number = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Type:\n1)Normal\n2)Delux\n3)Super Delux");
+                room_type = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Capacity:(1/2/3/4)");
+                room_capacity = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("AC Service (true/false):");
+                ac = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Wi-Fi Service (true/false):");
+                wifi = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Cable Service (true/false):");
+                cable = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Laundry Service (true/false):");
+                laundry = Convert.ToBoolean(Console.ReadLine());
+                Room room = new Room(room_id, room_type, room_number, room_capacity, ac, wifi, cable, laundry);
+                hotel.addRoom(room);
+                Console.WriteLine("Do you want to add Another Room (yes/no):");
+                ch = Console.ReadLine();
+            } while (ch == "yes");
+            hotel.display();
+        }
+    }
+}
+
+3. From the previous exercise, we have a set of room for the hotel. In this exercise we will assign rooms to the customers when they come to book a room. The customers are registered only during the booking process.
+Note: Assume that, each time a new customer comes.
+ 
+When the customer specifies his/her needs, you should search for the requirements and assign the room if the specified room is available. Else ask the customer to alter his requirements.
+ 
+The reservation happens in the Reservation class. In the Program class create a Reservation List to store all the reservations. Each time check if the room is available before assigning the room.
+ 
+So, there are two things to check before assigning the room:
+Fulfilling the requirements.
+Availability of the room.
+ 
+Create a Reservation class with folowing data members:
+customer, room, checkInDate, checkOutDate, bookingDate;
+ 
+and
+argumented constructor.
+ 
+ 
+In the Main class, after reservation, add the Reservation object to the Reservation List.
+ 
+Add a Boolean variable to check the availability of the room.
+  availability;
+ 
+Once a room is booked set the availability as false. Only when the availability is true, a customer can book a room.
+ 
+For simplicity, assume that the room is unavailable after booking, irrespective of the date.
+
+Sample Input and Ouput: 
+
+Enter the Hotel details: 
+Enter the Hotel Name: 
+taj 
+Enter the Hotel ID: 
+1 
+Enter the Hotel Address 
+cbe 
+Enter the Room Details: 
+Enter the Room Id: 
+1 
+Enter the Room Number: 
+101 
+Enter the Room Type: 
+1)Normal 
+2)Delux 
+3)Super Delux 
+1 
+Enter the Room Capacity:(1/2/3/4) 
+1 
+AC Service (true/false): 
+true 
+Wi-Fi Service (true/false): 
+true 
+Cable Service (true/false): 
+true 
+Laundry Service (true/false): 
+true 
+Do you want to add Another Room (yes/no): 
+yes 
+Enter the Room Details: 
+Enter the Room Id: 
+2 
+Enter the Room Number: 
+202 
+Enter the Room Type: 
+1)Normal 
+2)Delux 
+3)Super Delux 
+1 
+Enter the Room Capacity:(1/2/3/4) 
+1 
+AC Service (true/false): 
+true 
+Wi-Fi Service (true/false): 
+true 
+Cable Service (true/false): 
+true 
+Laundry Service (true/false): 
+true 
+Do you want to add Another Room (yes/no): 
+yes 
+Enter the Room Details: 
+Enter the Room Id: 
+3 
+Enter the Room Number: 
+303 
+Enter the Room Type: 
+1)Normal 
+2)Delux 
+3)Super Delux 
+3 
+Enter the Room Capacity:(1/2/3/4) 
+3 
+AC Service (true/false): 
+true 
+Wi-Fi Service (true/false): 
+false 
+Cable Service (true/false): 
+true 
+Laundry Service (true/false): 
+true 
+Do you want to add Another Room (yes/no): 
+no 
+Thank you for booking !! 
+The rooms Details in taj : 
+Hotel Name:taj. 
+Hotel ID:1. 
+Hotel Address:cbe. 
+
+Room Details: 
+
+Room Number :101 
+Room Type :Normal 
+Services Available: 
+AC 
+Wi-Fi 
+Cable Connection 
+Laundry 
+
+Room Number :202 
+Room Type :Normal 
+Services Available: 
+AC 
+Wi-Fi 
+Cable Connection 
+Laundry 
+
+Room Number :303 
+Room Type :Super Delux 
+Services Available: 
+AC 
+Cable Connection 
+Laundry 
+
+Reservation 
+
+Customer Registration: 
+
+Enter the customer details: 
+Enter the first name: 
+karthikeyan 
+Enter the last name: 
+j 
+Enter the contact number: 
+1234123 
+Enter the e-mail id: 
+jk@a.com 
+Enter the proof type: 
+licence 
+Enter the proof id: 
+TN1234 
+
+The customer details are as follows 
+The customer details are: 
+First Name : karthikeyan 
+Last Name : j 
+Contact Number : 1234123 
+E-Mail : jk@a.com 
+Proof Type : licence 
+Proof ID : TN1234 
+
+Enter the room requirements: 
+Enter the Room Type: 
+1)Normal 
+2)Delux 
+3)Super Delux 
+2 
+Enter the Room Capacity:(1/2/3/4) 
+2 
+AC Service (true/false): 
+true 
+Wi-Fi Service (true/false): 
+true 
+Cable Service (true/false): 
+true 
+Laundry Service (true/false): 
+true 
+No rooms of specified requirements 
+Please re-enter 
+
+
+Enter the room requirements: 
+Enter the Room Type: 
+1)Normal 
+2)Delux 
+3)Super Delux 
+1 
+Enter the Room Capacity:(1/2/3/4) 
+1 
+AC Service (true/false): 
+true 
+Wi-Fi Service (true/false): 
+true 
+Cable Service (true/false): 
+true 
+Laundry Service (true/false): 
+true 
+Please take room number 101 
+
+Enter the Booking date 
+01/05/2015 
+Enter the check-in date 
+01/05/2015 
+Enter the check-out date 
+02/05/2015 
+Do you want to perform another reservation?(y/n) 
+y 
+Reservation 
+
+Customer Registration: 
+
+Enter the customer details: 
+Enter the first name: 
+jimmy 
+Enter the last name: 
+shar 
+Enter the contact number: 
+154789636 
+Enter the e-mail id: 
+jimmy@sha.com 
+Enter the proof type: 
+passport 
+Enter the proof id: 
+IND123 
+
+The customer details are as follows 
+The customer details are: 
+First Name : jimmy 
+Last Name : shar 
+Contact Number : 154789636 
+E-Mail : jimmy@sha.com 
+Proof Type : passport 
+Proof ID : IND123 
+
+Enter the room requirements: 
+Enter the Room Type: 
+1)Normal 
+2)Delux 
+3)Super Delux 
+1 
+Enter the Room Capacity:(1/2/3/4) 
+1 
+AC Service (true/false): 
+true 
+Wi-Fi Service (true/false): 
+true 
+Cable Service (true/false): 
+true 
+Laundry Service (true/false): 
+true 
+Please take room number 202 
+
+Enter the Booking date 
+01/03/2015 
+Enter the check-in date 
+01/05/2015 
+Enter the check-out date 
+01/15/2015 
+Do you want to perform another reservation?(y/n) 
+n 
+The reservation details are as follows: 
+
+karthikeyan - 101 - 01/05/2015 - 01/05/2015 - 02/05/2015 
+jimmy - 202 - 01/03/2015 - 01/05/2015 - 01/15/2015
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+namespace LoopingStat
+{
+    class Hotel
+    {
+        public string Name, Address;
+        public int Hotel_Id;
+        public List<Room> Room_List = new List<Room>();
+        public void addRoom(Room room)
+        {
+            Room_List.Add(room);
+        }
+        public void display()
+        {
+            Console.WriteLine("Thank you for booking !!");
+            Console.WriteLine("The rooms Details in {0} :", Name);
+            Console.WriteLine("Hotel Name:{0}.", Name);
+            Console.WriteLine("Hotel ID:{0}.", Hotel_Id);
+            Console.WriteLine("Hotel Address:{0}.", Address);
+            Console.WriteLine();
+            Console.WriteLine("Room Details:");
+            Console.WriteLine();
+            foreach (Room room in Room_List)
+            {
+                Console.WriteLine("Room Number :{0}", room.Room_Number);
+                Console.Write("Room Type :");
+                if (room.RoomType == 1) { Console.WriteLine("Normal"); }
+                else if (room.RoomType == 2) { Console.WriteLine("Delux"); }
+                else { Console.WriteLine("Super Delux"); }
+                Console.WriteLine("Services Available:");
+                if (room.Room_Ac) { Console.WriteLine("AC"); }
+                if (room.Room_Wifi) { Console.WriteLine("Wi-Fi"); }
+                if (room.Room_Cabel) { Console.WriteLine("Cable Connection"); }
+                if (room.Room_Laundry) { Console.WriteLine("Laundry"); }
+                Console.WriteLine();
+            }
+        }
+    }
+    class Room
+    {
+        public int Room_Id, RoomType, Room_Number, Room_Capacity;
+        public bool Room_Ac, Room_Wifi, Room_Cabel, Room_Laundry, availability;
+        public Room(int room_id, int room_type, int room_number, int room_capacity, bool ac, bool wifi, bool cabel, bool laundry)
+        {
+            Room_Id = room_id;
+            RoomType = room_type;
+            Room_Number = room_number;
+            Room_Capacity = room_capacity;
+            Room_Ac = ac;
+            Room_Wifi = wifi;
+            Room_Cabel = cabel;
+            Room_Laundry = laundry;
+            availability = true;
+        }
+
+    }
+    class Reservation
+    {
+        public string customer, checkInDate, checkOutDate, bookingDate;
+        public int room;
+        public Reservation(string customer_name, int room_no, string check_in_date, string check_out_date, string booking_date)
+        {
+            customer = customer_name;
+            room = room_no;
+            checkInDate = check_in_date;
+            checkOutDate = check_out_date;
+            bookingDate = booking_date;
+        }
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int flag = 0;
+            List<Reservation> list = new List<Reservation>();
+            Hotel hotel = new Hotel();
+            string ch = null;
+            int room_id, room_number, room_type, room_capacity;
+            bool ac, wifi, cable, laundry;
+            Console.WriteLine("Enter the Hotel details:");
+            Console.WriteLine("Enter the Hotel Name:");
+            hotel.Name = Console.ReadLine();
+            Console.WriteLine("Enter the Hotel ID:");
+            hotel.Hotel_Id = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the Hotel Address:");
+            hotel.Address = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Enter the Room Details:");
+                Console.WriteLine("Enter the Room Id:");
+                room_id = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Number:");
+                room_number = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Type:\n1)Normal\n2)Delux\n3)Super Delux");
+                room_type = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Capacity:(1/2/3/4)");
+                room_capacity = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("AC Service (true/false):");
+                ac = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Wi-Fi Service (true/false):");
+                wifi = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Cable Service (true/false):");
+                cable = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Laundry Service (true/false):");
+                laundry = Convert.ToBoolean(Console.ReadLine());
+                Room room = new Room(room_id, room_type, room_number, room_capacity, ac, wifi, cable, laundry);
+                hotel.addRoom(room);
+                Console.WriteLine("Do you want to add Another Room (yes/no):");
+                ch = Console.ReadLine();
+            } while (ch == "yes");
+
+            hotel.display();
+            do
+            {
+                int n = 0;
+                Console.WriteLine("Reservation\n");
+                Console.WriteLine("Customer Registration:\n");
+                Console.WriteLine("Enter the customer details:");
+                Console.WriteLine("Enter the first name:");
+                string fname = Console.ReadLine();
+                Console.WriteLine("Enter the last name:");
+                string lname = Console.ReadLine();
+                Console.WriteLine("Enter the contact number:");
+                long contact = Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("Enter the e-mail id:");
+                string email = Console.ReadLine();
+                Console.WriteLine("Enter the proof type:");
+                string ptype = Console.ReadLine();
+                Console.WriteLine("Enter the proof id:");
+                string pid = Console.ReadLine();
+                //Console.WriteLine();
+                if (flag != 0)
+                {
+                    Console.WriteLine();
+                }
+                flag = 1;
+                Console.WriteLine("The customer details are as follows");
+                Console.WriteLine("The customer details are:");
+                Console.WriteLine("First Name : {0}", fname);
+                Console.WriteLine("Last Name : {0}", lname);
+                Console.WriteLine("Contact Number : {0}", contact);
+                Console.WriteLine("E-Mail : {0}", email);
+                Console.WriteLine("Proof Type : {0}", ptype);
+                Console.WriteLine("Proof ID : {0}", pid);
+                while (true)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Enter the room requirements:");
+                    Console.WriteLine("Enter the Room Type:\n1)Normal\n2)Delux\n3)Super Delux");
+                    int rtype = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter the Room Capacity:(1/2/3/4)");
+                    int rcapacity = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("AC Service (true/false):");
+                    bool ac_ser = Convert.ToBoolean(Console.ReadLine());
+                    Console.WriteLine("Wi-Fi Service (true/false):");
+                    bool wifi_ser = Convert.ToBoolean(Console.ReadLine());
+                    Console.WriteLine("Cable Service (true/false):");
+                    bool cable_ser = Convert.ToBoolean(Console.ReadLine());
+                    Console.WriteLine("Laundry Service (true/false):");
+                    bool laundry_ser = Convert.ToBoolean(Console.ReadLine());
+                    var x = from a in hotel.Room_List
+                            where a.RoomType == rtype && a.Room_Capacity == rcapacity
+                            && a.Room_Ac == ac_ser && a.Room_Wifi == wifi_ser && a.Room_Cabel == cable_ser
+                            && a.Room_Laundry == laundry_ser && a.availability == true
+                            select a.Room_Number;
+                    n = x.FirstOrDefault();
+                    if (n == 0)
+                    {
+                        Console.WriteLine("No rooms of specified requirements\nPlease re-enter\n");
+                        continue;
+                    }
+                    Console.WriteLine("Please take room number {0}\n", n);
+                    Console.WriteLine("Enter the Booking date");
+                    string booking_date = Console.ReadLine();
+                    Console.WriteLine("Enter the check-in date");
+                    string check_in_date = Console.ReadLine();
+                    Console.WriteLine("Enter the check-out date");
+                    string check_out_date = Console.ReadLine();
+                    Reservation reservation = new Reservation(fname, n, check_in_date, check_out_date, booking_date);
+                    list.Add(reservation);
+                    foreach (Room room in hotel.Room_List)
+                    {
+                        if (room.Room_Number == n)
+                        {
+                            room.availability = false;
+                        }
+                    }
+                    break;
+                }
+                Console.WriteLine("Do you want to perform another reservation?(y/n)");
+                ch = Console.ReadLine();
+            } while (ch.Equals("y"));
+            Console.WriteLine("The reservation details are as follows:\n");
+            foreach (Reservation item in list)
+            {
+                Console.WriteLine(item.customer + " - " + item.room + " - " + item.bookingDate + " - " + item.checkInDate + " - " + item.checkOutDate);
+            }
+        }
+    }
+}

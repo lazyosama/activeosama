@@ -1,0 +1,593 @@
+1.
+
+n this session we are going to learn about the concept called Linq. 
+
+Create a class Customer with the following data members
+Id
+First Name
+Last Name
+
+Create a class Reservation with the following data members
+Customer Id
+Check In Date
+Check Out Date
+Fare
+
+In the Program class get the customer details and room details from the user. 
+
+Each customer has an unique customer id . 
+
+Refer sample Input and Output for formatting. 
+
+Write a Linq operation to find the customer's  FirstName and LastName who had booked the highest number of rooms, so that the agency could provide a concession when the same customer visits the Hotel next time. 
+
+[ Note: Date format is yyyy-mm-dd] 
+
+Sample Input and Output: 
+Enter Number of Customers : 
+2 
+Enter Id : 
+1 
+Enter First Name : 
+Ram 
+Enter Last Name : 
+Kumar 
+Enter Id : 
+2 
+Enter First Name : 
+Amar 
+Enter Last Name : 
+Nath 
+Enter Number of Reservations : 
+3 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2014-12-15 
+Enter Check In Date : 
+2014-12-31 
+Enter Check Out Date : 
+2015-01-01 
+Enter fare : 
+1000 
+Enter Customer Id : 
+2 
+Enter Booking Date : 
+2014-12-15 
+Enter Check In Date : 
+2014-12-20 
+Enter Check Out Date : 
+2014-12-23 
+Enter fare : 
+2000 
+Enter Customer Id : 
+2 
+Enter Booking Date : 
+2014-12-25 
+Enter Check In Date : 
+2015-01-05 
+Enter Check Out Date : 
+2015-01-07 
+Enter fare : 
+1000 
+Favorite Customer : Amar Nath
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EboxLinq
+{
+    class Program1
+    {
+        static void Main(string[] args)
+        {
+            reservation obj = new reservation();
+            obj.addcustomer();
+            obj.AddReservation();
+            obj.FindLucky();
+        }
+    }
+
+    class customer
+    {
+        int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        string firstname, lastname;
+
+        public string Lastname
+        {
+            get { return lastname; }
+            set { lastname = value; }
+        }
+
+        public string Firstname
+        {
+            get { return firstname; }
+            set { firstname = value; }
+        }
+
+
+    }
+
+    class reservation
+    {
+        int customerid;
+       // DateTime checkindate, checkoutdate;
+       // int fare;
+        List<customer> customerlist= new List<customer>();
+        List<int> reservationlist = new List<int>();
+        customer obj;
+
+        public void addcustomer()
+        {
+            Console.WriteLine("Enter Number of Customers :");
+            int count = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= count; i++)
+            {
+                obj = new customer();
+                Console.WriteLine("Enter Id :");
+                obj.Id = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter First Name :");
+                obj.Firstname = Console.ReadLine();
+                Console.WriteLine("Enter Last Name :");
+                obj.Lastname = Console.ReadLine();
+                customerlist.Add(obj);
+            }
+                
+        }
+
+        public void AddReservation()
+        {
+            Console.WriteLine("Enter Number of Reservations :");
+            int count = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= count; i++)
+            {
+                Console.WriteLine("Enter Customer Id :");
+                customerid = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Booking Date :");
+                DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Enter Check In Date :");
+                DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Enter Check Out Date :");
+                DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Enter fare :");
+                Convert.ToInt32(Console.ReadLine());
+                reservationlist.Add(this.customerid);
+            }
+        }
+
+        public void FindLucky()
+        {
+            Console.Write("Favorite Customer : ");
+            int[] number = reservationlist.ToArray();
+            var maxcount = number.GroupBy(x => x).ToList();
+            int max = -1,id =0;
+            foreach (var item in maxcount)
+            {
+                if (max < item.Count())
+                {
+                    max = item.Count();
+                    id = item.Key;
+                }
+            }
+            foreach (var item in customerlist)
+            {
+                if (item.Id == id)
+                {
+                    Console.WriteLine(item.Firstname + " " + item.Lastname);
+                    break;
+                }
+            }
+
+        }
+    }
+}
+
+
+2. In this exercise let us calculate the total revenue generated by the hotel in each month. 
+
+Create a class Reservation with the following field name:
+Customer Id
+Booking Date
+Check In Date
+Check Out Date
+Fare
+In the Program class get the details of the reservation as shown in sample input and output. 
+
+Take the Check Out Date in each reservation. Consider the month and year in Check Out Date in each reservation. Calculate the revenue for the hotel for each month. 
+
+Sample Input and Output: 
+Enter Number of Reservations : 
+6 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2014-12-15 
+Enter Check In Date : 
+2014-12-31 
+Enter Check Out Date : 
+2015-01-01 
+Enter fare : 
+1000 
+Enter Customer Id : 
+2 
+Enter Booking Date : 
+2014-12-15 
+Enter Check In Date : 
+2014-12-20 
+Enter Check Out Date : 
+2014-12-23 
+Enter fare : 
+2000 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2014-12-25 
+Enter Check In Date : 
+2015-01-05 
+Enter Check Out Date : 
+2015-01-07 
+Enter fare : 
+1000 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2015-01-20 
+Enter Check In Date : 
+2015-02-02 
+Enter Check Out Date : 
+2015-02-04 
+Enter fare : 
+1500 
+Enter Customer Id : 
+2 
+Enter Booking Date : 
+2015-01-25 
+Enter Check In Date : 
+2015-02-05 
+Enter Check Out Date : 
+2015-02-06 
+Enter fare : 
+1000 
+Enter Customer Id : 
+3 
+Enter Booking Date : 
+2014-12-30 
+Enter Check In Date : 
+2015-03-01 
+Enter Check Out Date : 
+2015-03-02 
+Enter fare : 
+1000 
+Monthly revenue 
+2014 12  2000 
+2015 1  2000 
+2015 2  2500 
+2015 3  1000
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace linq2
+{
+    class Program2
+    {
+        static List<Reservation> reservationList = new List<Reservation>();
+        static void Main(string[] args)
+        {
+            Reservation reservation = new Reservation();
+            //reservation.AddCustomer();
+
+
+            Console.WriteLine("Enter Number of Reservations :");
+            int count = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < count; i++)
+            {
+                reservation = new Reservation();
+                reservation.AddReservation();
+                reservationList.Add(reservation);
+            }
+            FindRevenue();
+        }
+        static internal void FindRevenue()
+        {
+            //List<DateTime> dateList = new List<DateTime>();
+            //dateList.Add(new DateTime(2015, 1, 18));
+            //dateList.Add(new DateTime(2015, 2, 18));
+            //dateList.Add(new DateTime(2015, 2, 18));
+            //dateList.Add(new DateTime(2014, 2, 18));
+            //dateList.Add(new DateTime(2015, 3, 18));
+            //dateList.Add(new DateTime(2015, 4, 18));
+
+
+
+
+            //var yearGroup = from y in dateList
+            //            group y by y.Year into yg
+            //            select
+            //            new
+            //            {
+            //                Year = yg.Key,
+            //                monthGroup = from m in yg
+            //                             group m by m.Month into mg
+            //                             select
+            //                             new
+            //                             {
+            //                                 Month = mg.Key
+            //                             }
+
+            //            };
+
+
+            Console.WriteLine("Monthly revenue");
+            var yearGroup = from y in reservationList
+                            group y by y.CheckOut.Year into yg
+                            orderby yg.Key
+                            select
+                            new
+                            {
+                                Year = yg.Key,
+                                monthGroup = from m in yg
+                                             group m by m.CheckOut.Month into mg
+                                             select
+                                             new
+                                             {
+                                                 Month = mg.Key,
+                                                 Total = mg.Sum(s => s.Fare)
+                                             }
+                            };
+
+            foreach (var item in yearGroup)
+            {
+                foreach (var i in item.monthGroup)
+                {
+                    Console.Write(item.Year + " ");
+                    Console.Write(i.Month + "  ");
+                    Console.WriteLine(i.Total);
+                }
+            }
+
+
+        }
+    }
+
+
+    class Reservation
+    {
+        //int cusId;
+        int fare;
+
+        public int Fare
+        {
+            get { return fare; }
+            set { fare = value; }
+        }
+        DateTime checkOut;
+
+        public DateTime CheckOut
+        {
+            get { return checkOut; }
+            set { checkOut = value; }
+        }
+
+
+        internal void AddReservation()
+        {
+
+
+
+            Console.WriteLine("Enter Customer Id :");
+            Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Booking Date :");
+            DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Check In Date :");
+            DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Check Out Date :");
+            checkOut = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Enter fare :");
+            fare = Convert.ToInt32(Console.ReadLine());
+
+
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+}
+
+3.
+
+In this exercise, we need to find the booking details between the given dates. 
+
+Create a class Reservation with the following field names:
+Customer Id
+Booking Date
+Check In Date
+Check Out Date
+Fare
+
+Get a set of reservations from the user in the Program class. Refer sample input and output for formatting. 
+
+Consider the Check In Date as start-date and Check Out Date as end-date. 
+
+Get the start-date and end-date from user, and display the reservations made between those dates. 
+
+Sample Input and Output: 
+Enter Number of Reservations : 
+8 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2014-12-15 
+Enter Check In Date : 
+2014-12-31 
+Enter Check Out Date : 
+2015-01-01 
+Enter fare : 
+1000 
+Enter Customer Id : 
+2 
+Enter Booking Date : 
+2014-12-15 
+Enter Check In Date : 
+2014-12-20 
+Enter Check Out Date : 
+2014-12-23 
+Enter fare : 
+2000 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2014-12-25 
+Enter Check In Date : 
+2015-01-05 
+Enter Check Out Date : 
+2015-01-07 
+Enter fare : 
+1000 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2015-01-20 
+Enter Check In Date : 
+2015-02-02 
+Enter Check Out Date : 
+2015-02-04 
+Enter fare : 
+1500 
+Enter Customer Id : 
+2 
+Enter Booking Date : 
+2015-01-25 
+Enter Check In Date : 
+2015-02-05 
+Enter Check Out Date : 
+2015-02-06 
+Enter fare : 
+1000 
+Enter Customer Id : 
+3 
+Enter Booking Date : 
+2014-12-30 
+Enter Check In Date : 
+2015-03-01 
+Enter Check Out Date : 
+2015-03-02 
+Enter fare : 
+1000 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2015-01-25 
+Enter Check In Date : 
+2015-02-05 
+Enter Check Out Date : 
+2015-02-07 
+Enter fare : 
+1000 
+Enter Customer Id : 
+1 
+Enter Booking Date : 
+2015-01-20 
+Enter Check In Date : 
+2015-02-20 
+Enter Check Out Date : 
+2015-02-24 
+Enter fare : 
+2000 
+Start Date : 
+2014-12-01 
+End Date : 
+2015-01-01 
+Reservations : 
+Customer Booking_Date Checkin_Date Checkout_Date Fare 
+1 2014-12-15 2014-12-31 2015-01-01 1000 
+2 2014-12-15 2014-12-20 2014-12-23 2000 
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace LoopingStat
+{
+
+
+    class Reservation
+    {
+
+        public float fare;
+        public int customer_ID;
+        public DateTime checkOutDate, checkInDate, Booking;
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            List<Reservation> reservation = new List<Reservation>();
+
+            int n2;
+
+            Console.WriteLine("Enter Number of Reservations :");
+            n2 = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= n2; i++)
+            {
+                Reservation r = new Reservation();
+                Console.WriteLine("Enter Customer Id :");
+                r.customer_ID = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Booking Date :");
+                r.Booking = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("Enter Check In Date :");
+                r.checkInDate = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("Enter Check Out Date :");
+                r.checkOutDate = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("Enter fare :");
+                r.fare = Convert.ToSingle(Console.ReadLine());
+                reservation.Add(r);
+            }
+            Console.WriteLine("Start Date :");
+            DateTime start_date = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("End Date :");
+            DateTime end_date = Convert.ToDateTime(Console.ReadLine());
+
+
+            var x = from p in reservation
+                    where p.checkInDate >= start_date && p.checkOutDate <= end_date
+                    select p;
+            Console.WriteLine("Reservations : ");
+            Console.WriteLine("Customer Booking_Date Checkin_Date Checkout_Date Fare");
+            foreach (var item in x)
+            {
+                Console.WriteLine(item.customer_ID + " " + item.Booking.ToString("yyyy-MM-dd") + " " +
+                    item.checkInDate.ToString("yyyy-MM-dd") + " " + item.checkOutDate.ToString("yyyy-MM-dd") + " " + item.fare);
+            }
+
+        }
+    }
+}

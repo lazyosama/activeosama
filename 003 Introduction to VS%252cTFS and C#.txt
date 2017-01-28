@@ -1,0 +1,1242 @@
+1. For hotel booking application, we'll start by getting all the registration information from the user . When a new Guest/Customer comes for booking a room we need to record the details.
+ 
+Get the following details from the user:
+Name
+Address
+Contact
+Email update
+Proof type
+Proof id
+ 
+Generate an id for the Guest /Customer and give it to him.
+ 
+Create a class Program with required field name
+ 
+and member functions
+Register()
+
+Add required parameters
+Print the details in the register method. Refer Sample Input and Ouput.
+
+Sample Input Output:
+ 
+Registration
+ 
+Enter your name
+Sasi
+Enter your address
+Ramanathapuram, Coimbatore-03.
+Contact Number
+9003469198
+E-Mail ID
+sasi@gmail.com
+Enter proof type
+Licence
+Enter proof id
+TN03LN001
+ 
+Welcome Sasi.
+Here are your details
+Address: Ramanathapuram, Coimbatore-03.
+Contact Number: 9003469198
+E-Mail ID: sasi@gmail.com
+Proof type: Licence
+Proof id: TN03LN001
+ 
+Thank you for registering. Your id is 1..
+
+
+
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ebox1
+{
+    class Program1
+    {
+        static void Main(string[] args)
+        {
+            program obj;
+            obj=new program();
+            obj.register();
+        }
+    }
+
+    class program
+    {
+        public void register()
+        {
+            string name, address, email, proof_type,proof_id;
+            long contact;
+            Console.WriteLine("\n\n\n\n\n\n\n\nRegistration\n");
+            Console.WriteLine("Enter your name");
+           name= Console.ReadLine();
+           Console.WriteLine("Enter your address");
+           address = Console.ReadLine();
+           Console.WriteLine("Contact Number");
+            contact =Convert.ToInt64( Console.ReadLine());
+            Console.WriteLine("E-Mail ID");
+            email = Console.ReadLine();
+            Console.WriteLine("Enter proof type");
+            proof_type = Console.ReadLine();
+            Console.WriteLine("Enter proof id");
+            proof_id = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine("Welcome "+ name+".");
+            Console.WriteLine("Here are your details");
+            Console.WriteLine("Address: "+address);
+            Console.WriteLine("Contact Number: "+contact);
+            Console.WriteLine("E-Mail ID: "+email);
+            Console.WriteLine("Proof type: "+proof_type);
+            Console.WriteLine("Proof id: "+proof_id);
+            Console.WriteLine("\nThank you for registering. Your id is 1..");
+        
+        }
+    }
+}
+
+
+2. We have successfully registered the users. Now the next task is to book a room. Our duty is to list all the services provided and the user needs to choose the services.
+As per the selections made, the fare is calculated.
+The following are the different room types and additions services which the Guest /Customer have to choose.
+ 
+AC(Rs.1000)/non-AC(Rs.750)
+Cot(Single(Rs.0)/Double(Rs.350))
+With cable connection(Rs. 50)/without cable connection(Rs.0)
+Wi-Fi needed(Rs.200) or not(Rs.0)
+Laundry service needed(Rs.100) or not(Rs.0)
+ 
+Calculate the total fare after the Guest/Customer chooses the services and display it, and ask if the Guest /Customer needed any correction and confirm. And also display the options made by the
+Guest/Customer.
+ 
+Create a class Program with data members,
+    ac, cot, cable, wifi, laundry, date
+ 
+and member functions
+Book()
+
+Add necessary parameters.
+
+Note: Date format is (MM/DD/YYYY)
+ 
+Sample Input Output:
+ 
+Booking:
+Please choose the services required.
+AC/non-AC(AC/nAC)
+nAC
+Cot(Single/Double)
+Double
+With cable connection/without cable connection(C/nC)
+nC
+Wi-Fi needed or not(W/nW)
+nW
+Laundry service needed or not(L/nL)
+nL
+ 
+The total charge is Rs.1100.
+The services chosen are Double cot non-AC room
+Cable connection disabled
+wifi disabled
+without laundry service
+ 
+Do you want to proceed?(yes/no)
+no
+Please choose the services required.
+AC/non-AC(AC/nAC)
+AC
+Cot(Single/Double)
+Single
+With cable connection/without cable connection(C/nC)
+C
+Wi-Fi needed or not(W/nW)
+W
+Laundry service needed or not(L/nL)
+L
+ 
+The total charge is Rs.1350.
+The services chosen are
+Single cot AC room
+Cable connection enabled
+Wi-Fi enabled
+with laundry service
+ 
+Do you want to proceed?(yes/no)
+yes
+Thank you for booking. Your room number is 1.
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ebox1
+{
+    class Program2
+    {
+        static void Main(string[] args)
+        {
+            details d = new details();
+            d.book();
+            Console.ReadKey();
+        }
+    }
+
+    class details
+    {
+        string ac, cot, cable, wifi, laundry, m;
+
+        public void book()
+        {
+            Console.WriteLine("Booking:\n");
+            do
+            {
+                Console.WriteLine("Please choose the services required.");
+
+                Console.WriteLine("AC/non-AC(AC/nAC)");
+                ac = Console.ReadLine();
+                Console.WriteLine("Cot(Single/Double)");
+                cot = Console.ReadLine();
+                Console.WriteLine("With cable connection/without cable connection(C/nC)");
+                cable = Console.ReadLine();
+                Console.WriteLine("Wi-Fi needed or not(W/nW)");
+                wifi = Console.ReadLine();
+                Console.WriteLine("Laundry service needed or not(L/nL)");
+                laundry = Console.ReadLine();
+                int cost = 0;
+                if (ac == "AC" || ac == "ac")
+                {
+                    ac = "AC";
+                    cost = cost + 1000;
+                }
+                else
+                {
+                    cost += 750;
+                    ac = "non-AC";
+                }
+                if (cot == "Single" || cot == "single")
+                    cost += 0;
+                else { cot = "Double"; cost += 350; }
+                if (cable == "C" || cable == "c")
+                {
+                    cable = "enabled";
+                    cost += 50;
+                }
+                else { cable = "disabled"; cost += 0; }
+                if (wifi == "W" || wifi == "w")
+                { wifi = "enabled"; cost += 200; }
+                else { wifi = "disabled"; cost += 0; }
+                if (laundry == "L" || laundry == "l")
+                { laundry = "with"; cost += 100; }
+                else { laundry = "without"; cost += 0; }
+                Console.WriteLine("\nThe total charge is Rs." + cost + ".");
+                Console.WriteLine("The services chosen are\n" + cot + " cot " + ac + " room");
+                Console.WriteLine("Cable connection " + cable);
+
+
+                Console.WriteLine("Wi-Fi " + wifi);
+                Console.WriteLine(laundry + " laundry service");
+                Console.WriteLine("\nDo you want to proceed?(yes/no)\n");
+                m = Console.ReadLine();
+            } while (m == "no" || m == "No");
+            Console.WriteLine("Thank you for booking. Your room number is 1.");
+        }
+
+    }
+}
+
+
+3.Before booking it will be better to know the availablity, So you need to check the status of the rooms. To do this add a new data member to the class, List bookedRooms.
+So the final list of data members is:
+   ac, cot, cable, wifi, laundry, bookedRooms
+ 
+And a new member function,
+CheckAvailabilityStatus() - add required parameters
+ 
+This function will check the bookedRoom List and tell whether the roomID is present in it.
+ 
+To do this you need to make your solution menu driven.
+ 
+You will have two choices:
+ 
+Book
+Check Status
+ 
+You can refer to the booking part logic from your previous assignment.
+ 
+After each booking, add the room number to the “bookedRooms” List.
+For simplicity, assume that for each booking successive rooms are allocated, starting from 1.
+ 
+Sample Input Output:
+ 
+Menu
+1. Book
+2. Check Status
+3. Exit
+Enter your choice
+1
+ 
+Booking:
+Please choose the services required.
+AC/non-AC(AC/nAC)
+AC
+Cot(Single/Double)
+Single
+With cable connection/without cable connection(C/nC)
+C
+Wi-Fi needed or not(W/nW)
+W
+Laundry service needed or not(L/nL)
+L
+ 
+The total charge is Rs.1350.
+The services chosen are
+Single cot AC room
+Cable connection enabled
+Wi-Fi enabled
+with laundry service
+ 
+Do you want to proceed?(yes/no)
+yes
+ 
+Thank you for booking. Your room number is 1.
+ 
+Menu
+1. Book
+2. Check Status
+3. Exit
+Enter your choice
+1
+ 
+Booking:
+Please choose the services required.
+AC/non-AC(AC/nAC)
+AC
+Cot(Single/Double)
+Double
+With cable connection/without cable connection(C/nC)
+C
+Wi-Fi needed or not(W/nW)
+W
+Laundry service needed or not(L/nL)
+L
+ 
+The total charge is Rs.1700.
+The services chosen are
+Double cot AC room
+Cable connection enabled
+Wi-Fi enabled
+with laundry service
+ 
+Do you want to proceed?(yes/no)
+yes
+ 
+Thank you for booking. Your room number is 2.
+ 
+Menu
+1. Book
+2. Check Status
+3. Exit
+Enter your choice
+2
+ 
+Check Status:
+Enter room number
+2
+Room number 2 is booked.
+ 
+Menu
+1. Book
+2. Check Status
+3. Exit
+Enter your choice
+2
+ 
+Check Status:
+Enter room number
+23
+Room number 23 is not booked.
+ 
+Menu
+1. Book
+2. Check Status
+3. Exit
+Enter your choice
+3
+
+
+SOLN - 
+   
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ebox
+{
+    class Program3
+    {
+        public static void Main(string[] args)
+        {
+            program1 p = new program1();
+            p.check();
+        }
+    }
+
+    class program1
+    {
+        public static List<int> bookedroom = new List<int>();
+        public static int ct = 0;
+        public void check()
+        {
+            int i = 0;
+            do
+            {
+                Console.WriteLine("Menu");
+                Console.WriteLine("1. Book");
+                Console.WriteLine("2. Check Status");
+                Console.WriteLine("3. Exit");
+                Console.WriteLine("Enter your choice");
+                i = Convert.ToInt32(Console.ReadLine());
+                switch (i)
+                {
+
+                    case 1:
+
+                        string value;
+                        Console.WriteLine("Booking:");
+                        do
+                        {
+                            string ac, cot, cable, wifi, laundry;
+                            Console.WriteLine("Please choose the services required.");
+                            Console.WriteLine("AC/non-AC(AC/nAC)");
+                            ac = Console.ReadLine();
+                            Console.WriteLine("Cot(Single/Double)");
+                            cot = Console.ReadLine();
+                            Console.WriteLine("With cable connection/without cable connection(C/nC)");
+                            cable = Console.ReadLine();
+                            Console.WriteLine("Wi-Fi needed or not(W/nW)");
+                            wifi = Console.ReadLine();
+                            Console.WriteLine("Laundry service needed or not(L/nL)");
+                            laundry = Console.ReadLine();
+                            int sum = 0;
+                            if (ac == "AC")
+                            {
+                                sum = sum + 1000;
+                                if (cot == "Double")
+                                    sum = sum + 350;
+                                if (cot == "Single")
+                                    sum = sum + 0;
+                                if (cable == "C")
+                                    sum = sum + 50;
+                                if (cable == "nC")
+                                    sum = sum + 0;
+                                if (wifi == "W")
+                                    sum = sum + 200;
+                                if (wifi == "nW")
+                                    sum = sum + 0;
+                                if (laundry == "L")
+                                    sum = sum + 100;
+                                if (laundry == "nL")
+                                    sum = sum + 0;
+                            }
+                            if (ac == "nAC")
+                            {
+                                sum = sum + 750;
+                                if (cot == "Double")
+                                    sum = sum + 350;
+                                if (cot == "Single")
+                                    sum = sum + 0;
+                                if (cable == "C")
+                                    sum = sum + 50;
+                                if (cable == "nC")
+                                    sum = sum + 0;
+                                if (wifi == "W")
+                                    sum = sum + 200;
+                                if (wifi == "nW")
+                                    sum = sum + 0;
+                                if (laundry == "L")
+                                    sum = sum + 100;
+                                if (laundry == "nL")
+                                    sum = sum + 0;
+                            }
+                            Console.WriteLine("The total charge is Rs." + sum + ".");
+                            Console.WriteLine("The services chosen are");
+                            if (ac == "AC" && cot == "Double")
+                            {
+                                Console.WriteLine("Double cot AC room");
+                            }
+                            else if (ac == "nAC" && cot == "Double")
+                            {
+                                Console.WriteLine("Double cot non-AC room");
+                            }
+
+                            if (ac == "AC" && cot == "Single")
+                            {
+                                Console.WriteLine("Single cot AC room");
+                            }
+                            else if (ac == "nAC" && cot == "Single")
+                            {
+                                Console.WriteLine("Single cot non-AC room");
+                            }
+
+                            if (cable == "C")
+                                Console.WriteLine("Cable connection enabled");
+                            if (cable == "nC")
+                                Console.WriteLine("Cable connection disabled");
+                            if (wifi == "W")
+                                Console.WriteLine("Wi-Fi enabled");
+                            if (wifi == "nW")
+                                Console.WriteLine("Wi-Fi disabled");
+                            if (laundry == "L")
+                                Console.WriteLine("with laundry service");
+                            if (laundry == "nL")
+                                Console.WriteLine("without laundry service");
+                            Console.WriteLine("Do you want to proceed?(yes/no)");
+                            value = Console.ReadLine();
+                            if (value == "yes")
+                            {
+                                ct = ct + 1;
+                                Console.WriteLine("Thank you for booking. Your room number is " + ct + ".");
+                                bookedroom.Add(ct);
+
+                            }
+                        } while (value == "no");
+                        break;
+                    case 2: Console.WriteLine("Check Status:");
+                        Console.WriteLine("Enter room number");
+                        CheckAvailaibiltyStatus();
+                        break;
+                    case 3: break;
+
+                }
+            } while (i != 3);
+        }
+        static void CheckAvailaibiltyStatus()
+        {
+            int counter = 0;
+            int c = Convert.ToInt32(Console.ReadLine());
+            foreach (int element in bookedroom)
+            {
+                if (c.Equals(element))
+                {
+                    counter++;
+                }
+            }
+            if (counter > 0)
+                Console.WriteLine("Room number " + c + " is booked.");
+            else
+                Console.WriteLine("Room number " + c + " is not booked.");
+        }
+    }
+
+}
+
+4. Hope you got used to menu driven programming. In this exercise you need to perform updations.
+For instance, lets suppose the user is asking for an email update. You need to give provision for updating the email address.
+ 
+Lets make the problem simple.
+These are the following tasks to be done:
+First register the guest/customer details,
+Ask guest/customer whether to update email,
+If yes ,Update the email and finally
+Display the details after updating.
+
+Sample Input Output  1:
+ 
+Registration
+ 
+Enter your name
+Sasi
+Enter your address
+Ramanathapuram, Coimbatore-03.
+Contact Number
+9003469198
+E-Mail ID
+sasi@gmail.com
+Enter proof type
+Licence
+Enter proof id
+TN03LN001
+ 
+Welcome Sasi.
+Here are your details
+Address: Ramanathapuram, Coimbatore-03.
+Contact Number: 9003469198
+E-Mail ID: sasi@gmail.com
+Proof type: Licence
+Proof id: TN03LN001
+ 
+Thank you for registering. Your id is 1..
+ 
+Do you want to update the email id?(yes/no)
+yes
+ 
+Update Email:
+Enter new Email id
+sasinarmi@gmail.com
+ 
+Email updated
+ 
+Your details are as follows
+Name: Sasi
+Address: Ramanathapuram, Coimbatore-03.
+Contact Number: 9003469198
+E-Mail ID: sasinarmi@gmail.com
+Proof type: Licence
+Proof id: TN03LN001
+
+Sample Input and Output 2:
+Registration
+
+Enter your name
+jk
+Enter your address
+abc 123
+Contact Number
+2345612345
+E-Mail ID
+jk@gmail.com
+Enter proof type
+passport
+Enter proof id
+ind001
+
+Welcome jk.
+Here are your details
+Address: abc 123
+Contact Number: 2345612345
+E-Mail ID: jk@gmail.com
+Proof type: passport
+Proof id: ind001
+
+Thank you for registering. Your id is 1..
+
+Do you want to update the email id?(yes/no)
+no
+Thank you
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ebox1
+{
+    class Program4
+    {
+        static void Main(string[] args)
+        {
+            prog obj;
+            obj = new prog();
+            obj.register();
+        }
+    }
+
+    class prog
+    {
+        public void register()
+        {
+            string name, address, email, proof_type, proof_id,m;
+            long contact;
+       
+            Console.WriteLine("\n\n\n\n\n\n\n\nRegistration\n");
+            Console.WriteLine("Enter your name");
+            name = Console.ReadLine();
+            Console.WriteLine("Enter your address");
+            address = Console.ReadLine();
+            Console.WriteLine("Contact Number");
+            contact = Convert.ToInt64(Console.ReadLine());
+            Console.WriteLine("E-Mail ID");
+            email = Console.ReadLine();
+            Console.WriteLine("Enter proof type");
+            proof_type = Console.ReadLine();
+            Console.WriteLine("Enter proof id");
+            proof_id = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine("Welcome " + name + ".");
+            Console.WriteLine("Here are your details");
+            Console.WriteLine("Address: " + address);
+            Console.WriteLine("Contact Number: " + contact);
+            Console.WriteLine("E-Mail ID: " + email);
+            Console.WriteLine("Proof type: " + proof_type);
+            Console.WriteLine("Proof id: " + proof_id);
+            Console.WriteLine("\nThank you for registering. Your id is 1..");
+            Console.WriteLine("\nDo you want to update the email id?(yes/no)");
+            m = Console.ReadLine();
+            if (m == "yes" || m == "YES" || m == "Yes")
+            {
+                Console.WriteLine("\nUpdate Email:");
+
+                    Console.WriteLine("Enter new Email id");
+                    email = Console.ReadLine();
+                    Console.WriteLine("\nEmail updated");
+                   Console.WriteLine("\nYour details are as follows");
+                     Console.WriteLine("Name: "+name);
+                     Console.WriteLine("Address: " + address);
+                     Console.WriteLine("Contact Number: " + contact);
+                     Console.WriteLine("E-Mail ID: " + email);
+                     Console.WriteLine("Proof type: " + proof_type);
+                     Console.WriteLine("Proof id: " + proof_id);
+                    
+                }
+                else if(m=="no"||m=="No")
+                    Console.WriteLine("Thank you");
+            }
+
+
+        }
+    }
+
+
+5. In this exercise you have to print all the bookings made using the start date and the end date.
+ 
+Lets solve the problem by following these steps:
+Register the customer details and ask whether he wants to book a room
+If “yes” then book a room as per the customer requirements.
+Repeat step 1 and 2, until the registration is over.
+Finally display the customer id for each room booked, which were booked between the start date and end date.
+ 
+Note: Make sure the assumptions that were made during “booking” hold here also.
+ 
+Add a new argument to the Book() function
+ Book()
+add required parameters
+ 
+Pass any date to the function as per your wish.
+ 
+Add a new member function to the class:
+ViewBookings()
+add required parameters
+ 
+ 
+Pre-requisites: Use the Language Fundamentals and Operators,Statements.
+ 
+Note: 1. Date format is (MM/DD/YYYY)
+          2. Use Methods to add the values to the list(customerIdList,roomNumberList, bookingDateList)
+          3. Format for displaying the room number and customer list is System.out.format("%d%12d",roomNumberList.get(i),customerIdList.get(i));
+
+ 
+Sample Input Output:
+Registration
+ 
+Enter your name
+Sasi
+Enter your address
+Ramanathapuram, Coimbatore-03.
+Contact Number
+9003469198
+E-Mail ID
+sasi@gmail.com
+Enter proof type
+Licence
+Enter proof id
+TN03LN001
+ 
+Thank you for registering. Your id is 1..
+Do you want to book a room (y/n)?
+y
+ 
+Booking
+ 
+AC/non-AC(AC/nAC)
+AC
+Cot(Single/Double)
+Single
+With cable connection/without cable connection(C/nC)
+C
+Wi-Fi needed or not(W/nW)
+W
+Laundry service needed or not(L/nL)
+L
+Enter the date of booking
+11/23/2014
+ 
+The total charge is Rs.1350.
+The services chosen are
+Single cot AC room
+Cable connection enabled
+Wi-Fi enabled
+Laundry service included
+ 
+Do you want to proceed?(yes/no)
+yes
+Thank you for booking. Your room number is 1.
+ 
+Do you want to continue registration?(yes/no)
+yes
+ 
+Registration
+ 
+Enter your name
+jk
+Enter your address
+PN palayam, Coimbatore-04.
+Contact Number
+9003963564
+E-Mail ID
+jk@gmail.com
+Enter proof type
+Voter ID
+Enter proof id
+TN03VO004
+ 
+Thank you for registering. Your id is 2..
+Do you want to book a room (y/n)?
+n
+ 
+Thank You
+ 
+Do you want to continue registration?(yes/no)
+yes
+ 
+Registration
+ 
+Enter your name
+Thana
+Enter your address
+ABCD, Karur-01
+Contact Number
+9003456789
+E-Mail ID
+thana@gmail.com
+Enter proof type
+Licence
+Enter proof id
+TN03LN003
+ 
+ 
+Thank you for registering. Your id is 3..
+Do you want to book a room (y/n)?
+y
+ 
+Booking
+ 
+AC/non-AC(AC/nAC)
+AC
+Cot(Single/Double)
+Single
+With cable connection/without cable connection(C/nC)
+C
+Wi-Fi needed or not(W/nW)
+W
+Laundry service needed or not(L/nL)
+L
+Enter the date of booking
+11/23/2014
+ 
+The total charge is Rs.1350.
+The services chosen are
+Single cot AC room
+Cable connection enabled
+Wi-Fi enabled
+Laundry service included
+ 
+Do you want to proceed?(yes/no)
+yes
+Thank you for booking. Your room number is 2.
+ 
+Do you want to continue registration?(yes/no)
+no
+ 
+View all bookings:
+ 
+Enter the start date
+11/22/2014
+Enter the end date
+11/23/2014
+The bookings made from 11/22/2014 to 11/23/2014 are
+Room number Customer ID
+1                       1
+2                       3
+
+
+soln - 
+
+  using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ebox1
+{
+    class Program5
+    {
+        static int roomID = 1;
+        static int custID = 1;
+        static int dateID = 1;
+
+        static ArrayList bookedRooms = new ArrayList();
+        static ArrayList Customer_ID = new ArrayList();
+        static ArrayList time_Date = new ArrayList();
+
+        static void Main(string[] args)
+        {
+            char choice;
+            string reg_ch = null, h;
+
+            DateTime start_date, end_date;
+
+            do
+            {
+                Console.Write("Registration");
+                Console.WriteLine();
+                Console.WriteLine();
+
+                Console.WriteLine("Enter your name");
+                //  Name = Console.ReadLine();
+                Console.ReadLine();
+                Console.WriteLine("Enter your address");
+                //Address = Console.ReadLine();
+                Console.ReadLine();
+                Console.WriteLine("Contact Number");
+                //  contact = Convert.ToInt64(Console.ReadLine());
+                Console.ReadLine();
+                Console.WriteLine("E-Mail ID");
+                //  email = Console.ReadLine();
+                Console.ReadLine();
+
+                Console.WriteLine("Enter proof type");
+                //   pr_type = Console.ReadLine();
+                Console.ReadLine();
+
+                Console.WriteLine("Enter proof id");
+                // pr_id = Console.ReadLine();
+                Console.ReadLine();
+
+                Console.WriteLine();
+
+                Console.WriteLine("Thank you for registering." + " Your id is " + custID + "..");
+                Customer_ID.Add(custID);
+                custID++;
+
+                Console.WriteLine();
+                Console.WriteLine("Do you want to book a room (y/n)?");
+                choice = Convert.ToChar(Console.ReadLine());
+
+                if (choice == 'Y' || choice == 'y')
+                {
+                    /*Console.WriteLine("Welcome " + Name + ".");
+                    Console.WriteLine("Here are your details");
+ 
+                    Console.WriteLine("Address: " + Address);
+                    Console.WriteLine("Contact Number: " + contact);
+ 
+                    Console.WriteLine("E-Mail ID: " + email);
+                    Console.WriteLine("Proof type: " + pr_type);
+                    Console.WriteLine("Proof id: " + pr_id);
+                    Console.WriteLine();*/
+                    Booking();
+                }
+                else
+                {
+                    bookedRooms.Add(null);
+                    Console.WriteLine();
+                    Console.WriteLine("Thank You");
+                }
+                Console.WriteLine();
+
+                Console.WriteLine("Do you want to continue registration?(yes/no)");
+                reg_ch = Console.ReadLine();
+                Console.WriteLine();
+
+            } while (reg_ch == "yes");
+
+            Console.WriteLine("View all bookings:");
+            Console.WriteLine();
+
+            Console.WriteLine("Enter the start date");
+            start_date = Convert.ToDateTime(Console.ReadLine());
+
+            Console.WriteLine("Enter the end date");
+            end_date = Convert.ToDateTime(Console.ReadLine());
+
+            Console.WriteLine("The bookings made from " + start_date.ToShortDateString() + " to " + end_date.ToShortDateString() + " are");
+            Console.WriteLine("Room number Customer ID");
+
+            for (int i = 0; i < Customer_ID.Count; i++)
+            {
+                if (bookedRooms[i] != null)
+                {
+                    h = String.Format("{0}           {1}", bookedRooms[i], Customer_ID[i]);
+                    Console.WriteLine(h);
+                }
+            }
+            Console.ReadLine();
+        }
+
+        public static void Booking()
+        {
+            string ac, Cot, cable, wifi, laundry;
+            DateTime dt;
+            string ch = null;
+
+            Console.WriteLine();
+            Console.WriteLine("Booking:");
+
+            Console.WriteLine("AC/non-AC(AC/nAC)");
+            ac = Console.ReadLine();
+
+            Console.WriteLine("Cot(Single/Double)");
+            Cot = Console.ReadLine();
+
+            Console.WriteLine("With cable connection/without cable connection(C/nC)");
+            cable = Console.ReadLine();
+
+            Console.WriteLine("Wi-Fi needed or not(W/nW)");
+            wifi = Console.ReadLine();
+
+            Console.WriteLine("Laundry service needed or not(L/nL)");
+            laundry = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.WriteLine("Enter the date of booking");
+            dt = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine();
+
+            time_Date.Add(dt);
+            dateID++;
+
+            int charge = 0;
+
+            if (ac == "AC")
+            {
+                charge += 1000;
+            }
+            else if (ac == "nAC")
+            {
+                charge += 750;
+            }
+            if (Cot == "Single")
+            {
+                charge += 0;
+            }
+            else if (Cot == "Double")
+            {
+                charge += 350;
+            }
+            if (cable == "C")
+            {
+                charge += 50;
+            }
+            else if (cable == "nC")
+            {
+                charge += 0;
+            }
+            if (wifi == "W")
+            {
+                charge += 200;
+            }
+            else if (wifi == "nW")
+            {
+                charge += 0;
+            }
+            if (laundry == "L")
+            {
+                charge += 100;
+            }
+            else if (laundry == "nL")
+            {
+                charge += 0;
+            }
+
+            Console.WriteLine("The total charge is Rs." + charge + ".");
+            Console.WriteLine("The services chosen are");
+
+            if (ac == "AC" && Cot == "Single")
+            {
+                Console.WriteLine("Single cot AC room");
+            }
+            else if (ac == "nAC" && Cot == "Single")
+            {
+                Console.WriteLine("Single cot non-AC room");
+            }
+            else if (ac == "AC" && Cot == "Double")
+            {
+                Console.WriteLine("Double cot AC room");
+            }
+            else if (ac == "nAC" && Cot == "Double")
+            {
+                Console.WriteLine("Double cot non-AC room");
+            }
+            if (cable == "C")
+            {
+                Console.WriteLine("Cable connection enabled");
+            }
+            else if (cable == "nC")
+            {
+                Console.WriteLine("Cable connection disabled");
+            }
+            if (wifi == "W")
+            {
+                Console.WriteLine("Wi-Fi enabled");
+            }
+            else if (wifi == "nW")
+            {
+                Console.WriteLine("Wi-Fi disabled");
+            }
+            if (laundry == "L")
+            {
+                Console.WriteLine("Laundry service included");
+            }
+            else if (laundry == "nL")
+            {
+                Console.WriteLine("without laundry service");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Do you want to proceed?(yes/no)");
+            ch = Console.ReadLine();
+
+            if (ch == "yes")
+            {
+                Console.WriteLine();
+                Console.WriteLine("Thank you for booking. Your room number is " + roomID + ".");
+            }
+            bookedRooms.Add(roomID);
+            roomID++;
+        }
+    }
+}
+
+
+6. Your final task is to display all the registered customers.
+ 
+You add a new function
+void ViewCustomers()
+ 
+This function should display all the registered customers
+ 
+Pre-requisites: Use the Language Fundamentals and Operators,Statements.
+ 
+Note:
+Use C# Format Specifier:
+ 
+string header = String.Format("{0,15}{1,15}\n","Customer ID","Customer name");
+Console.WriteLine(header); 
+ 
+Sample Input Output:
+ 
+Registration
+Enter your name
+Sasi
+Enter your address
+Ramanathapuram, Coimbatore-03.
+Contact Number
+9003469198
+E-Mail ID
+sasi@gmail.com
+Enter proof type
+Licence
+Enter proof id
+TN03LN001
+Thank you for registering. Your id is 1.
+Do you want to continue registration (y/n)?
+y
+Registration
+Enter your name
+jk
+Enter your address
+Tiruverambur, trichy-13.
+Contact Number
+9003963564
+E-Mail ID
+jk@gmail.com
+Enter proof type
+Licence
+Enter proof id
+TN03LN004
+Thank you for registering. Your id is 2.
+Do you want to continue registration (y/n)?
+n
+Customers list
+The registered customers are
+Customer ID  Customer name
+1                     Sasi
+2                     jk
+Thank You
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EBox1
+{
+    class Program6
+    {
+        static void Main(string[] args)
+        {
+            new details();
+            // d.register();
+            Console.ReadKey();
+
+        }
+    }
+    class details
+    {
+        string name, m;
+        static int i = 0;
+        List<int> customerid = new List<int>();
+        List<string> customername = new List<string>();
+        public void ViewCustomers()
+        {
+            int i, j;
+            string h;
+            string header = String.Format("{0}    {1}  ", "Customer ID", "Customer name");
+            Console.WriteLine("Customers list");
+            Console.WriteLine("The registered customers are");
+            Console.WriteLine(header);
+            for (i = 0, j = 0; i < customerid.Count; i++, j++)
+            {
+                h = String.Format("{0,-15}{1,-15}", customerid[i], customername[j]);
+                Console.WriteLine(h);
+            }
+            Console.WriteLine("Thank You");
+        }
+        public details()
+        {
+            do
+            {
+                Console.WriteLine("Registration");
+                Console.WriteLine("Enter your name");
+                name = Console.ReadLine();
+                customername.Add(name);
+                Console.WriteLine("Enter your address");
+                Console.ReadLine();
+                Console.WriteLine("Contact Number");
+                Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("E-Mail ID");
+                Console.ReadLine();
+                Console.WriteLine("Enter proof type");
+                Console.ReadLine();
+                Console.WriteLine("Enter proof id");
+                Console.ReadLine();
+                Console.WriteLine("Thank you for registering. Your id is " + ++i + ".");
+                customerid.Add(i);
+                Console.WriteLine("Do you want to continue registration (y/n)?");
+                m = Console.ReadLine();
+            } while (m == "y" || m == "Y");
+
+            ViewCustomers();
+        }
+    }
+}
+

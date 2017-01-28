@@ -1,0 +1,168 @@
+1. 
+
+In continuation to the functionality already implemented, let us implement few more additional functionality using Multi-Threading concepts. 
+
+    When a customer Checks-out the room the room rent should be calculated. 
+
+    We need to have an additional functionality in between as before the calculation in room rent the room service needs to check the room and then if everything is clear the checkout process should be started. Continuing with which the cost needs to be calculated. 
+
+    Implement the below functionality by multi-threading concepts. 
+    Check-out process initiated by the customer
+    Room service check happens in the background threadwhile Check-out process is on WAIT
+    When Room service ends, Check-out process RESUMES.
+    Calculate the cost (Cost of Room type per day multiplied by number of stay)
+
+Create a class Reservation  with the following data members
+check in date
+check out date
+number of days
+room type
+cost
+
+and following member functions:
+checkout
+rentCalculate
+Create a class RoomService with the following data member 
+    room clearance 
+
+Sample Input and Output 1: 
+
+Do you want to check out yes/no 
+yes 
+Enter the check-in date 
+04/01/2015 
+Enter the check-out date 
+07/01/2015 
+Enter the Room Type: 
+Normal 
+Deluxe 
+Super Deluxe 
+Normal 
+Room Service Initiated for the room 
+Room checking is going on 
+Room Service is clear - You can proceed with checkout process 
+The total rent for 1 Days is 1500 
+
+
+Sample Input and Output 2: 
+Do you want to check out yes/no 
+no 
+Thank you for continuing your stay
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Globalization;
+
+namespace EboxMultiThreading
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            string decision;
+            Console.WriteLine("Do you want to check out yes/no");
+            decision = Console.ReadLine();
+
+            Reservation robj = new Reservation();
+
+            //obj.checkout();
+            Thread t1 = new Thread(robj.checkout);
+
+            if (decision == "yes")
+            {
+                t1.Start();
+
+                //Monitor.Wait(robj);
+                //rsobj.roomClearance();
+                //Monitor.Pulse(robj);
+                t1.Join();
+
+            }
+            else
+                Console.WriteLine("Thank you for continuing your stay");
+
+
+
+        }
+    }
+    class Reservation
+    {
+        string checkindate, checkoutdate;
+        static double numofdays;
+        double cost;
+        string roomtype;
+
+
+        public void checkout()
+        {
+
+            
+            Console.WriteLine("Enter the check-in date");
+            checkindate =Console.ReadLine();
+
+            Console.WriteLine("Enter the check-out date");
+            checkoutdate = Console.ReadLine();
+
+            numofdays = countday(checkindate, checkoutdate);
+            Console.WriteLine("Enter the Room Type:\nNormal\nDeluxe\nSuper Deluxe");
+            roomtype = Console.ReadLine();
+            if (roomtype == "Normal")
+                roomtype = "Normal";
+            if (roomtype == "Deluxe")
+                roomtype = "Deluxe";
+            if (roomtype == "Super Deluxe")
+                roomtype = "Super Deluxe";
+
+            Console.WriteLine("Room Service Initiated for the room");
+            rentcalculate();
+        }
+
+        public double countday(string cin, string cout)
+        {
+            DateTime checkin, checkout;
+            string[] dateArray = cin.Split('/');
+            checkin = new DateTime(Convert.ToInt32(dateArray[2]), Convert.ToInt32(dateArray[1]), Convert.ToInt32(dateArray[0]));
+            string[] dateArray1 = cout.Split('/');
+            checkout = new DateTime(Convert.ToInt32(dateArray1[2]), Convert.ToInt32(dateArray1[1]), Convert.ToInt32(dateArray1[0]));
+            TimeSpan s = checkout.Subtract(checkin);
+          //  Console.WriteLine(s.TotalDays);
+            return s.TotalDays;
+        }
+
+        public void rentcalculate()
+        {
+            RoomService rsobj = new RoomService();
+            Thread t2 = new Thread(rsobj.roomClearance);
+            t2.Start();
+            t2.Join();
+            if (roomtype == "Normal")
+                cost = numofdays * 1500;
+            if (roomtype == "Deluxe")
+                cost = numofdays * 3500;
+            if (roomtype == "Super Deluxe")
+                cost = numofdays * 3500;
+            Console.WriteLine("The total rent for {0} Days is {1}", numofdays, cost);
+        }
+
+    }
+
+    class RoomService
+    {
+        //  var rooms;
+        //Reservation res = new Reservation();
+
+        public void roomClearance()
+        {
+            Console.WriteLine("Room checking is going on");
+            Console.WriteLine("Room Service is clear - You can proceed with checkout process");
+            //res.rentcalculate();
+        }
+    }
+}

@@ -1,0 +1,350 @@
+1.  
+Lets implement collections in this session.
+ 
+In the previous session we were already using collections in the form of ArrayList, to store the customer details, room details and reservations.
+ 
+In this exercise you need to get the customer details in a list and display the customer details sorted in ascending order of their first name.
+ 
+[Note : Refer previous sessions for customer details]
+ 
+Sample Input and Output:
+ 
+Customer Registration:
+ 
+Enter the customer details:
+Enter the first name:
+jk
+Enter the last name:
+karthik
+Enter the contact number:
+784569
+Enter the e-mail id:
+jk@gmail.com
+Enter the proof type:
+voter
+Enter the proof id:
+IND123
+Do you want to add new customer?(y/n)
+y
+Enter the customer details:
+Enter the first name:
+jimmy
+Enter the last name:
+sha
+Enter the contact number:
+1234521
+Enter the e-mail id:
+jimmy@sha.com
+Enter the proof type:
+licence
+Enter the proof id:
+TN001
+Do you want to add new customer?(y/n)
+n
+The customer details are as follows
+The customer details are:
+First Name : jimmy
+Last Name : sha
+Contact Number : 1234521
+E-Mail : jimmy@sha.com
+Proof Type : licence
+Proof ID : TN001
+ 
+The customer details are:
+First Name : jk
+Last Name : karthik
+Contact Number : 784569
+E-Mail : jk@gmail.com
+Proof Type : voter
+Proof ID : IND123
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace LoopingStat
+{
+    class customer
+    {
+        public string fname, lname, email, prooftype, id;
+        public long num;
+    }
+    class Program
+    {
+        public List<customer> cust = new List<customer>();
+        public void add_detail()
+        {
+            string input;
+            do
+            {
+                customer c = new customer();
+                Console.WriteLine("Enter the customer details:");
+                Console.WriteLine("Enter the first name:");
+                c.fname = Console.ReadLine();
+                Console.WriteLine("Enter the last name:");
+                c.lname = Console.ReadLine();
+                Console.WriteLine("Enter the contact number:");
+                c.num = Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("Enter the e-mail id:");
+                c.email = Console.ReadLine();
+                Console.WriteLine("Enter the proof type:");
+                c.prooftype = Console.ReadLine();
+                Console.WriteLine("Enter the proof id:");
+                c.id = Console.ReadLine();
+                Console.WriteLine("Do you want to add new customer?(y/n)");
+                input = Console.ReadLine();
+                cust.Add(c);
+            } while (input == "y");
+        }
+        public void display(List<customer> c)
+        {
+            Console.WriteLine("The customer details are as follows");
+            var x = from n in c
+                    orderby n.fname ascending
+                    select n;
+            foreach (customer item in x)
+            {
+                Console.WriteLine("The customer details are:");
+                Console.WriteLine("First Name : " + item.fname);
+                Console.WriteLine("Last Name : " + item.lname);
+                Console.WriteLine("Contact Number : " + item.num);
+                Console.WriteLine("E-Mail : " + item.email);
+                Console.WriteLine("Proof Type : " + item.prooftype);
+                Console.WriteLine("Proof ID : " + item.id + "\n");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            Console.WriteLine("Customer Registration:\n");
+            p.add_detail();
+            p.display(p.cust);
+        }
+    }
+}
+
+2. Lets do one more exercise in Collections.
+ 
+In this exercise you should add the rooms in a list and display the rooms in the sorted order with respect to their room number.
+ 
+Refer previous problems for customer details.
+ 
+Sample Input and Output:
+ 
+Enter the Hotel details:
+Enter the Hotel Name:
+taj
+Enter the Hotel ID:
+1
+Enter the Hotel Address
+cbe
+Enter the Room Details:
+Enter the Room Id:
+1
+Enter the Room Number:
+202
+Enter the Room Type:
+1)Normal
+2)Delux
+3)Super Delux
+2
+Enter the Room Capacity:(1/2/3/4)
+3
+AC Service (true/false):
+true
+Wi-Fi Service (true/false):
+true
+Cable Service (true/false):
+true
+Laundry Service (true/false):
+false
+Do you want to add Another Room (yes/no):
+yes
+Enter the Room Details:
+Enter the Room Id:
+2
+Enter the Room Number:
+101
+Enter the Room Type:
+1)Normal
+2)Delux
+3)Super Delux
+3
+Enter the Room Capacity:(1/2/3/4)
+2
+AC Service (true/false):
+true
+Wi-Fi Service (true/false):
+true
+Cable Service (true/false):
+true
+Laundry Service (true/false):
+true
+Do you want to add Another Room (yes/no):
+no
+Thank you for booking !!
+The rooms Details in taj :
+Hotel Name:taj.
+Hotel ID:1.
+Hotel Address:cbe.
+ 
+Room Details:
+ 
+Room Number :101
+Room Type :Super Delux
+Services Available:
+AC
+Wi-Fi
+Cable Connection
+Laundry
+ 
+Room Number :202
+Room Type :Delux
+Services Available:
+AC
+Wi-Fi
+Cable Connection
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace LoopingStat
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Register n = new Register();
+
+            n.reg();
+
+        }
+
+    }
+    public class Register : IComparable<Register>
+    {
+
+        string choice;
+
+        string h_Name, h_Address;
+
+        int h_ID, room_Type, room_no;
+
+        bool ac_Ser, wifi_Ser, cable_Ser, laundry_Ser;
+        public static List<Register> room_Number_List = new List<Register>();
+        public int CompareTo(Register cus)
+        {
+
+            return this.room_no.CompareTo(cus.room_no);
+
+        }
+
+
+        public Register()
+        {
+
+            // TODO: Complete member initialization
+
+        }
+
+        public Register(int room_Type, int room_no, bool ac_Ser, bool wifi_Ser, bool cable_Ser, bool laundry_Ser)
+        {
+            // TODO: Complete member initialization
+            this.room_Type = room_Type;
+            this.room_no = room_no;
+            this.ac_Ser = ac_Ser;
+            this.wifi_Ser = wifi_Ser;
+            this.cable_Ser = cable_Ser;
+            this.laundry_Ser = laundry_Ser;
+        }
+        public void reg()
+        {
+            Console.WriteLine("Enter the Hotel details:");
+            Console.WriteLine("Enter the Hotel Name:");
+            h_Name = Console.ReadLine();
+            Console.WriteLine("Enter the Hotel ID:");
+            h_ID = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Enter the Hotel Address");
+            h_Address = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Enter the Room Details:");
+                Console.WriteLine("Enter the Room Id:");
+                Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Number:");
+                room_no = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Room Type:");
+                Console.WriteLine("1)Normal\n2)Delux\n3)Super Delux");
+                room_Type = Convert.ToInt16(Console.ReadLine());
+                Console.WriteLine("Enter the Room Capacity:(1/2/3/4)");
+                Convert.ToInt16(Console.ReadLine());
+                Console.WriteLine("AC Service (true/false):");
+                ac_Ser = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Wi-Fi Service (true/false):");
+                wifi_Ser = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Cable Service (true/false):");
+                cable_Ser = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("Laundry Service (true/false):");
+                laundry_Ser = Convert.ToBoolean(Console.ReadLine());
+                Register obj = new Register(room_Type, room_no, ac_Ser, wifi_Ser, cable_Ser, laundry_Ser);
+                room_Number_List.Add(obj);
+                Console.WriteLine("Do you want to add Another Room (yes/no):");
+                choice = Console.ReadLine();
+            } while (choice == "yes");
+            Console.WriteLine("Thank you for booking !!");
+            room_Number_List.Sort();
+            Console.WriteLine("The rooms Details in {0} :", h_Name);
+            Console.WriteLine("Hotel Name:{0}.", h_Name);
+            Console.WriteLine("Hotel ID:{0}.", h_ID);
+            Console.WriteLine("Hotel Address:{0}.", h_Address);
+            Console.WriteLine();
+            Console.WriteLine("Room Details:");
+            foreach (Register c in room_Number_List)
+            {
+                Console.WriteLine();
+
+                Console.WriteLine("Room Number :{0}", c.room_no);
+                if (c.room_Type == 1)
+                {
+
+                    Console.WriteLine("Room Type :Normal");
+                }
+                else if (c.room_Type == 2)
+                {
+                    Console.WriteLine("Room Type :Delux");
+                }
+                else if (c.room_Type == 3)
+                {
+                    Console.WriteLine("Room Type :Super Delux");
+                }
+                Console.WriteLine("Services Available:");
+                if (c.ac_Ser)
+                {
+                    Console.WriteLine("AC");
+                }
+
+                if (c.wifi_Ser)
+                {
+                    Console.WriteLine("Wi-Fi");
+                }
+                if (c.cable_Ser)
+                {
+                    Console.WriteLine("Cable Connection");
+                }
+                if (c.laundry_Ser)
+                {
+                    Console.WriteLine("Laundry");
+                }
+            }
+        }
+    }
+}

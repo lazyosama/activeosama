@@ -1,0 +1,3000 @@
+1)	Electricity Bill:
+String Input1=”AAAAA12345”;
+String Input2=”AAAAA23456”;
+int Input3=4;
+UserMainCode(Input1,Input2,Input3)
+Logic : Output1=(Input1-Input2)*Input3
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter a string1");
+            string input1 = Console.ReadLine();
+            Console.WriteLine("enter string2");
+            string input2 = Console.ReadLine();
+            Console.WriteLine("enter string3");
+            int input3 = int.Parse(Console.ReadLine());
+            int output1=0;
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sb1 = new StringBuilder();
+            foreach (char ch in input1)
+            {
+                if (char.IsDigit(ch))
+                {
+                    sb.Append(ch);
+                }
+            }
+            foreach (char c in input2)
+            {
+                if (char.IsDigit(c))
+                {
+                    sb1.Append(c);
+                }
+            }
+            string r = sb.ToString();
+            string re = sb1.ToString();
+            int n = int.Parse(r);
+            int k = int.Parse(re);
+            if (n > k)
+            {
+                output1 = (n - k) * input3;
+            }
+            else
+            {
+                output1 = (k - n) * input3;
+            }
+
+            Console.WriteLine(output1);
+            Console.Read();           
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------                                                 
+2)Count vowels in a given string
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter a string:");
+            string input1 = Console.ReadLine();
+            char[] ch = input1.ToCharArray();
+            int count = 0;
+            foreach (var i in ch)
+            {
+                if (i >= 'a' && i <= 'z')
+                {
+                    if (i == 'a' || i == 'e' || i == 'i' || i == 'o' || i == 'u')
+                    {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine(count);
+            Console.Read();          
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+3)Roman to decimal 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter a string");
+            string input1 = Console.ReadLine();
+            int f=0;
+            int sum=0;
+            char[] ch = input1.ToCharArray();
+            int[] output=new int[20]; 
+            int k=0;
+            foreach(var i in ch)
+            {
+              if(!(i=='i'||i=='v'|| i=='x'||i=='l'||i=='c'||i=='d'|| i=='m'||i=='I'||i=='V'|| i=='X'||i=='L'||i=='C'||i=='D'|| i=='M'))
+              {
+                  f=1;
+                  break;
+              }
+            }
+                if(f==1)
+                {
+                }
+                else
+                {
+                    foreach(char i in ch)
+                    {
+                    switch(i)
+                    {
+                        case 'i':
+                            output[k]=1;
+                            k++;
+                            break;
+                        case 'v':
+                             output[k]=5;
+                            k++;
+                            break;
+                        case 'x':
+                            output[k]=10;
+                            k++;
+                            break;
+                        case 'l':
+                             output[k]=50;
+                            k++;
+                            break;
+                             case 'c':
+                            output[k]=100;
+                            k++;
+                            break;
+                        case 'd':
+                             output[k]=500;
+                            k++;
+                            break;
+                             case 'm':
+                            output[k]=1000;
+                            k++;
+                            break;
+                    }
+
+                    }
+                }
+            for(int l=0;l<k;l++)
+            {
+                if(output[l]>output[l+1])
+                {
+                    sum=sum+output[l];
+                }
+                else
+                {
+                    sum=sum-output[l];
+                }
+            }
+            Console.WriteLine(sum);
+            Console.Read();           
+                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+4)Calculation of discount
+Double Input1=Amount of purchase
+Char Input2 will be ‘T’ for Tv and ‘M’ for music player 
+Discount rates will be given in question itself
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+5)Sum of cube of ‘n’ natural numbers  
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter the range");
+            int input1 = int.Parse(Console.ReadLine());
+            int sum = 0;
+            for (int i = 1; i <=input1;i++ )
+            {
+                sum = sum + i * i * i;
+            }
+                Console.WriteLine(sum);
+            Console.Read();           
+                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+6)Display the length of the smallest string in given string array  
+ 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string[] input1 = { "santhu","cat","is"};     
+            int l = input1[0].Length;
+            
+            foreach (string s in input1)
+            {
+                int n = s.Length;
+                if (n <= l)
+                {
+                    l = n;
+                }
+            }
+         Console.WriteLine(l);
+            Console.Read();           
+                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+7)Alternate addition and subtraction of integers from a given array  
+                                 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input1 = { 1, 2, 3, 4, 5 };
+            int i = 0,sum=0;
+            for (i = 0; i < input1.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+
+                    sum = sum + input1[i];
+                }
+                else
+                {
+                    sum = sum - input1[i];
+                }
+            }
+            Console.WriteLine(sum);
+            Console.Read();           
+                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+8)Count all the characters from a given string array  
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input1 = { "santhu", "minnu", "keerthi" };
+            int c=0,count = 0;
+            foreach (string s in input1)
+            {
+                char[] ch = s.ToCharArray();
+                foreach (char i in ch)
+                {
+
+                    if (char.IsLetter(i))
+                    {
+                        c++;
+                    }
+                   
+                }
+                
+            }
+            if (c > 0)
+            {
+                count = count + c;
+            }
+            Console.WriteLine(count);
+            Console.Read();           
+                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------                                                         
+9)“CTS-123”. Keep CTS- as constant and change 123 alone
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "CTS-123";
+            int output1 = 0;
+            Regex reg = new Regex(@"^([CTS]+[-]+([0-9]{3}))$");
+            if (reg.IsMatch(input1))
+            {
+                
+                    output1 = 1;
+            }
+               
+           else
+                {
+                    output1 = -1;
+                }
+            Console.WriteLine(output1);
+            Console.Read();
+
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+10)"CTS-HYD-1234”Change locations alone like “CHN-BAN” etc ..  
+ 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1="CTS-HYD-1234";
+            string input2="hyderabad";
+            int output1 = 0;
+            Regex reg=new Regex(@"^([CTS]+[-]+([A-Za-z]{3})+[-]+([0-9]{4}))$");
+            if (reg.IsMatch(input1))
+            {
+                string res = input2.ToUpper();
+                if (input1.Contains(res.Substring(0, 3)))
+                {
+                    output1 = 1;
+                }
+                else
+                {
+                    output1 = -1;
+                }
+            }
+            else
+            {
+                output1 = -2;
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+11)Regular expression to check pattern “hi-how-are-you”
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1="hi-how-are-you";
+          
+            int output1 = 0;
+            Regex reg=new Regex(@"^(([a-zA-Z]{2})+[-]+([A-Za-z]{3})+[-]+([a-zA-Z]{3})+[-]+([a-zA-Z]{3}))$");
+            if (reg.IsMatch(input1))
+            {
+
+                output1 = 1;
+            }
+
+            else
+            {
+                output1 = -1;
+            }
+            
+            Console.WriteLine(output1);
+            Console.Read();
+
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+12)Remove duplicates elements from integer array and sum all even numbers
+output = 4653912
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+
+namespace ConsoleApplication23
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input1 = { 1, 2, 3, 4, 5, 6, 5, 3, 1, 9, 1, 2 };
+            int  f = 0;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < input1.Length; i++)
+            {
+                f = 0;
+                for (int j =i+1; j < input1.Length; j++)
+                {
+
+                    if (input1[i] == input1[j])
+                    {
+                        f = 1;
+                    }
+                   
+
+
+                }
+                if (f == 0)
+                {
+                    sb.Append(input1[i]);
+
+                }
+            }
+           // Console.WriteLine(sb.ToString());
+            string r = sb.ToString();
+            Console.WriteLine(r);
+            Console.Read();
+        }
+    }  }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+13)Find the day of the given date 
+ 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "12/02/2014";
+            DateTime dt;
+            string output1=" ";
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+            if (res == true)
+            {
+                output1 = dt.DayOfWeek.ToString();
+            }
+            else
+            {
+                output1 = "-1";
+            }
+         Console.WriteLine(output1);
+            Console.Read(
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+14)Find diff between 2 dates
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "12/02/2014";
+            string input2 = "27/02/2014";
+            DateTime dt;
+            DateTime dt1;
+            int output1=0;
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+            bool res1 = DateTime.TryParseExact(input2, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt1);
+
+            if (res == true && res1==true)
+            {
+                int dt2;
+                dt2 = dt1.Subtract(dt).Days;
+                output1 = dt2;
+                
+            }
+            else
+            {
+                output1 = -1;
+            }
+         Console.WriteLine(output1);
+            Console.Read();
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+15)	Display 1 if there are all 5 vowels in alphabetical order
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int output1 = 0;
+            string input1 = "sanetijogu";
+            StringBuilder sb = new StringBuilder();
+            
+            char[] ch = input1.ToCharArray();
+            for (int i = 0; i < ch.Length; i++)
+            {
+                if (ch[i] == 'a' || ch[i] == 'e' || ch[i] == 'i' || ch[i] == 'o' || ch[i] == 'u')
+                {
+                    sb.Append(ch[i]);
+                }
+                if (sb.ToString() == "aeiou")
+                {
+                    output1 = 1;
+                }
+                else
+                {
+                    output1 = -1;
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+16)	Student mark -> input- 5 integers
+if avg>=60 ->First class
+if avg>=50 &&avg<=59 ->Second Class
+if avg>=40 &&avg<=49 -> Third Class
+less than 40 -> failed 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input1 = { 45, 65, 75, 87, 90 };
+            string output1=" ";
+            double a = input1.Average();
+            if(a>=60)
+            {
+                output1="First class";
+            }
+            if(a>=50 &&a<=59)
+            {
+                output1="Second Class";
+            }
+
+            if(a>=40 &&a<=49)
+            {
+                output1="Third Class";
+            }
+            if(a<=40)
+            {
+                output1="fail";
+            }          
+            
+         Console.WriteLine(output1);
+         Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+17)	Find the maximum length in the given string array
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input1 = { "santhoshi", "is", "a", "good", "girl" };
+            int output1 = 0;
+            int n=input1[0].Length;
+            foreach (string a in input1)
+            {
+               int b = a.Length;
+                if (b >= n)
+                {
+                    n = b;
+                    output1 = n;
+                }
+            }   
+         Console.WriteLine(output1);
+         Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+18)	Find the maximum digit in the integer   
+  
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int i = 0,sum=0,temp=0;
+            int input1 = 50651;
+            temp=input1;
+            while (temp > 0)
+            {
+                i = temp % 10;
+                if (i > sum)
+                {
+                    sum = i;
+                }
+                temp = temp / 10;
+            }
+            Console.WriteLine(sum);
+            Console.Read();
+          
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+19)	Ip address 
+                                                                                   
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int output1 = 0;
+            IPAddress ip;
+            string input1="11.229.43.56";
+            char[] ch=input1.ToCharArray();
+            int f = 0;
+            for (int i = 0; i < ch.Length; i++)
+            {
+                if (char.IsDigit(ch[i]) || ch[i] == '.')
+                {
+                    f = 1;
+                    break;
+                }
+                else
+                {
+                    f = 0;
+                    break;
+                }
+            }
+
+            if (f == 1)
+            {
+                if (IPAddress.TryParse(input1, out ip))
+                {
+                    string[] op1 = input1.Split('.');
+                    int a = int.Parse(op1[0]);
+                    if (a > 0)
+                    {
+                        output1 = 1;
+                    }
+                    else
+                    {
+                        output1 = -1;
+                    }
+                }
+            }
+            else
+            {
+                output1 = -2;
+            }
+                
+        Console.WriteLine(output1);
+         Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+20)Find the repeated Element in the integer array and make that in ascending order?
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input1 = { 1, 1, 2, 3, 4, 5, 65, 65, 4, 2, 3 };
+            int[] output1 = new int[100];
+            Array.Sort(input1);
+            int k=0;
+            for (int i = 0; i < input1.Length; i++)
+            {
+                for (int j = i + 1; j < input1.Length; j++)
+                {
+                    if (input1[i] == input1[j])
+                    {
+                        output1[k] = input1[i];
+                        k++;
+                    }
+                }
+            }
+            Array.Resize(ref output1, k);
+            var x = output1.Distinct();
+            foreach (var op in x)
+            {
+
+                Console.WriteLine(op);
+            }
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+21)Find the odd numbers count in the integer array?
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int output1 = 0;
+            int[] input1 = { 1, 2, 3, 5};
+            for (int i = 0; i < input1.Length; i++)
+            {
+                if (input1[i] % 2 != 0)
+                {
+                    output1++;
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+22)Program to count the number of vowels in the given string.
+If the string contains any special character the return -1.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int output1 = 0, count = 0;
+            string input1 = "santhoshi";
+            input1 = input1.ToLower();
+            foreach (char c in input1)
+            {
+                if(!char.IsLetterOrDigit(c))
+                {
+                    output1 = -1;
+                    break;
+                }
+                else if (char.IsLetterOrDigit(c) || char.IsWhiteSpace(c))
+                {
+                    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+                    {
+                        count++;
+                        output1 = count;
+                       
+                    }
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+23)	Reverse the given string and store the output in the another string  
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "Hi Hello";
+            string output1 = " ";
+            StringBuilder sb = new StringBuilder();
+            string[] str = input1.Split(' ');
+
+            foreach (string i in str)
+            {
+                char[] ch = i.ToCharArray();
+                Array.Reverse(ch);
+                sb.Append(ch);
+            }
+            output1 = sb.ToString();
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------      
+24)	Adding years to date. If date format is wrong return -1. If years given is negative return -2 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "27/09/1992";
+            int input2=2;
+            int output1 = 0;
+            string output=" ";
+            DateTime dt;
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+            if (res == true)
+            {
+                dt = dt.AddYears(input2);
+                output = dt.ToString("dd/MM/yyyy");
+               // Console.WriteLine(output);
+                output1 = 1;
+            }
+            if (res == false)
+            {
+                output1 = -1;
+            }
+            if (input2 < 0)
+            {
+                output1 = -2;
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+25)	Calculate VAT%
+Input= character and integer input
+If product =”M”
+Vat= 5
+“V”
+Vat=12
+“C"
+Vat=6.25
+“D”
+Vat=6
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double input1=1000;
+           double output1;
+            double percent;
+            double vat;
+            char input2='M';
+            switch (input2)
+            {
+                case 'M':
+                    percent = 5;
+                    vat = percent / 100;
+
+                    output1 = input1 * (1 + vat);
+                    Console.WriteLine(output1);
+                    break;
+                case 'V':
+                    percent = 12;
+                    vat = percent / 100;
+                    output1 = input1 * (1 + vat);
+                    Console.WriteLine(output1);
+                    break;
+                case 'C':
+                    percent = 6.25;
+                    vat = percent / 100;
+                    output1 = input1 * (1 + vat);
+                    Console.WriteLine(output1);
+                    break;
+                case 'D':
+                    percent = 7;
+                    vat = percent / 100;
+                    output1 = input1 * (1 + vat);
+                    Console.WriteLine(output1);
+                    break;
+                default:
+                    output1 = -1;
+                    Console.WriteLine(output1);
+                    break;
+            }
+        
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+26)	Calculate Sales commission under various conditions based on salary
+Eg:If(salary<15000)
+Commission=8% of salary
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+27)	Calculate take home salary where basic salary, PF amount and medical insurance will be given.
+Take Home Salary=salary-PF-medicalInsurance
+PF
+for sal<15000---750
+sal between 15000 and 22000---850
+sal between 22000 to 30000--925
+salary above 30000--1000
+medical insurance for all the employees is 678
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input1 = 22000;
+            int output1;
+            int pf;
+            int mi = 678;
+            if (input1 < 15000)
+            {
+                pf = 750;
+                output1 = input1 - pf - mi;
+                Console.WriteLine(output1);
+            }
+            else if (input1 >= 15000 && input1 <= 22000)
+            {
+                pf = 850;
+                output1 = input1 - pf - mi;
+                Console.WriteLine(output1);
+            }
+            else if (input1 > 22000 && input1 <= 30000)
+            {
+                pf = 925;
+                output1 = input1 - pf - mi;
+                Console.WriteLine(output1);
+            }
+            else
+            {
+                pf = 1000;
+                output1 = input1 - pf - mi;
+                Console.WriteLine(output1);
+            }
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+28)	SIMPLE INTEREST:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Net;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double principal = 1200;
+            double time = 3.5;
+            double rate = 9.5;
+            double simpleinterest=0;
+            simpleinterest = (principal * time * rate)/100;
+            Console.WriteLine(simpleinterest);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+29)	DICE problem
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+       
+            public static void Main(string[] args)
+        
+        {
+            int input1 = 2, input2 = 7;
+            int output1;
+            if (input1 < 0 || input2 < 0)
+            {
+                output1 = -1;
+                Console.WriteLine(output1);
+
+            }
+            else
+            {
+                int sum = input1 + input2;
+                if (sum == 2 || sum == 3 || sum == 6 || sum == 11)
+                {
+                    output1 = 1000;
+                    Console.WriteLine(output1);
+                }
+                else if (sum == 4 || sum == 7 || sum == 10)
+                {
+                    output1 = 3000;
+                    Console.WriteLine(output1);
+                }
+                else if (sum == 5 || sum == 8 || sum == 9 || sum == 12)
+                {
+                    output1 = 5000;
+                    Console.WriteLine(output1);
+                }
+            }
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+30)	SUM OF ODD NO'S in a no.
+if sum is odd then 1
+else -1
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int output1 = 0;
+            int i = 0,sum=0,temp=0;
+            int input1 = 5469;
+            temp=input1;
+            while (temp > 0)
+            {
+                i = temp % 10;
+                if (i % 2 != 0)
+                {
+                    sum = sum + i;
+                }
+                temp = temp / 10;
+                if (sum % 2 != 0)
+                {
+                    output1 = 1;
+                }
+                else
+                {
+                    output1 = -1;
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+          
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+31)reverse second string nd insert into the middle of first string
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "arun";
+            string input2 = "saran";
+            string output1 = " ";
+            char[] ch = input2.ToCharArray();
+            Array.Reverse(ch);
+            string i2=new string(ch);
+            output1 = input1.Substring(0, input1.Length / 2) + i2 + input1.Substring(input1.Length / 2);
+            Console.WriteLine(output1);
+            Console.Read();    
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+32)	xml first name nd last name
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "<Names><Name><FirstName>John</FirstName><LastName>Smith</LastName></Name><Name><FirstName>James</FirstName><LastName>White</LastName></Name></Names>";
+            string output1 = " ";
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(input1);
+            StringBuilder sb = new StringBuilder();
+            XmlNodeList list = xmldoc.SelectNodes("/Names/Name");
+            foreach (XmlNode n in list)
+            {
+                sb.Append(n["FirstName"].InnerText);
+                sb.Append(' ');
+                sb.Append(n["LastName"].InnerText);
+                sb.Append(' ');
+                sb.Append('\n');
+            }
+            output1 = sb.ToString();
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+33)	phone bill
+if call below 300 cost is 200
+after for 50 calls cost is .60
+after for 50 calls cost is .50
+after for all calls cost is .40
+ie 200+(x*.60)+(y*.50)+(z*.40)
+calcualte the call cost
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input1 = 305;
+            double output1;
+            if (input1 <= 300)
+            {
+                output1 = 200;
+                Console.WriteLine(output1);
+            }
+            else if (input1 > 300 && input1 <= 350)
+            {
+                output1 = 200 + ((input1 - 300) * 0.60);
+                Console.WriteLine(output1);
+            }
+            else if (input1 > 350 && input1 <= 400)
+            {
+                output1 = 200 + (50 * 0.60) + ((input1 - 350) * 0.50);
+                Console.WriteLine(output1);
+            }
+            else if(input1>400)
+            {
+                output1 = 200 + (50 * 0.60) + (50 * 0.50) + ((input1 - 400) * 0.40);
+                Console.WriteLine(output1);
+            }
+        
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+34)	Find the common elements in the given array and sum the common elements
+Ex input1[]={1,2,3,4,5};
+Input2[]={2,3,6,7};
+Int output=5
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] input1={1,2,3,4,5};
+            int[] input2={2,3,6,7,5};
+            int sum = 0;
+            for (int i = 0; i < input1.Length; i++)
+            {
+                for (int j = 0; j < input2.Length; j++)
+                {
+                    if (input1[i] == input2[j])
+                    {
+                        sum = sum + input1[i];
+                    }
+                }
+            }
+            Console.WriteLine(sum);
+            Console.Read();
+
+   
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+35) Change the nth element in the given string to ‘*’
+Intput1=Hi Are You Fine Ram
+	Input2=5
+Input3=hi are you fine ***(it shld b in lower) 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "hi how are you ram";
+            string[] str1 = input1.Split(' ');
+            int input2 = 5;
+            int len = str1[input2-1].Length;
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sb1 = new StringBuilder();
+            for (int i = 0; i < len; i++)
+            {
+                sb.Append('*');
+            }
+            str1[input2-1] = sb.ToString();
+            for (int i = 0; i < str1.Length; i++)
+            {
+                sb1.Append(str1[i]);
+                sb1.Append(' ');
+
+            }
+            Console.WriteLine(sb1.ToString().TrimEnd());
+            Console.ReadLine(); 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+36) In the given list find the elements greater than 5
+List<int32>input1
+List<int32>output1
+B.L if any elements in the array is greater than 500
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int count = 0;
+            int c = 0;
+            List<Int32> input1 = new List<Int32>() { 5, 2, 4, };
+            List<Int32> input2 = new List<Int32>() { 5, 7, 2, 5, 4 };
+            List<Int32> input3 = new List<Int32>() { 9, 8, 0, 2, 5, 4 };
+            List<Int32> output1 = new List<Int32>();
+            List<Int32> res = new List<Int32>();
+            List<Int32> res1 = new List<Int32>();
+
+            int q = input1.Count();
+            int w = input2.Count();
+            int e = input3.Count();
+            if (q == 0 || w == 0 || e == 0)
+            {
+                output1.Add(0);
+                foreach (var y in output1)
+                    Console.WriteLine(y);
+                Console.Read();
+            }
+
+            foreach (var item in input1)
+            {
+                if (item < 0)
+                {
+                    count++;
+                    break;
+                }
+
+            }
+            foreach (var item in input2)
+            {
+                if (item < 0)
+                {
+                    count++;
+                    break;
+                }
+            }
+            foreach (var item in input3)
+            {
+                if (item < 0)
+                {
+                    count++;
+                    break;
+                }
+            }
+
+            foreach (var item in input1)
+            {
+                if (item > 500)
+                {
+                    c++;
+                    break;
+                }
+
+            }
+            foreach (var item in input2)
+            {
+                if (item > 500)
+                {
+                    c++;
+                    break;
+                }
+
+            }
+            foreach (var item in input3)
+            {
+                if (item > 500)
+                {
+                    c++;
+                    break;
+                }
+
+            }
+
+
+            if (count > 0)
+            {
+                output1.Add(-1);
+                foreach (var y in output1)
+                    Console.WriteLine(y);
+                Console.Read();
+            }
+            else if (c > 0)
+            {
+                output1.Add(-2);
+                foreach (var y in output1)
+                    Console.WriteLine(y);
+                Console.Read();
+
+            }
+            else if (count == 0 && c == 0)
+            {
+                res = input1.Intersect(input2).ToList();
+                res1 = res.Intersect(input3).ToList();
+                res1.Sort();
+                int k = res1.Count();
+                if (k == 0)
+                {
+                    output1.Add(-4);
+                }
+                else
+                {
+                    output1 = res1;
+                }
+                foreach (var x in output1)
+                {
+                    Console.WriteLine(x);
+                }
+                Console.Read();
+            }
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+37) Ship scenario
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+38) Flower scenario
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            double input1 = 3;
+            char input2 = 'N';
+            char input3 = 's';
+            int output = 0;
+            double sum = 0;
+            int temp = 0;
+            if (input2 != 'N' && input2 != 'E')
+            {
+                output = -2;
+                temp++;
+            }
+
+            if (temp == 0)
+            {
+                if (input3 != 's' && input3 != 'c')
+                {
+                    output = -3;
+                    temp++;
+                }
+            }
+            if (temp == 0)
+            {
+
+                if (input2 == 'N' && input3 == 'c')
+                {
+                    sum = input1 * 400 + 25000;
+                }
+                else if (input2 == 'N' && input3 == 's')
+                {
+                    sum = input1 * 400 + 15000;
+                }
+                else if (input2 == 'E' && input3 == 's')
+                {
+                    sum = input1 * 700 + 15000;
+                }
+                else if (input2 == 'E' && input3 == 'c')
+                {
+                    sum = input1 * 700 + 25000;
+                }
+
+                Console.WriteLine(sum);
+                if (sum < 20000)
+                {
+                    output = -1;
+                }
+                else
+                {
+                    output = 4;
+                }
+            }
+            Console.WriteLine(output);
+            Console.ReadLine();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+39) If input1=1-add the input1 and input2.
+ If input1=2 –subtract input1 and input2.
+ If input1=3-multiple input1 and input2
+ If input1=4-divide inpu1 and input2.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input1 = 4;
+            int input2 = 2;
+            int output1 = 0;
+            switch (input1)
+            {
+                case 1:
+                    output1 = input1 + input2;
+                    break;
+                case 2:
+                    output1 = input1 - input2;
+                    break;
+                case 3:
+                    output1 = input1 * input2;
+                    break;
+                case 4:
+                    output1 = input1 / input2;
+                    break;
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+40)take the middle two elements from an even length string.                                                
+foreg.confir
+output=nf.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "confir";
+            string output1 = " ";
+            output1 = input1.Substring(input1.Length / 2 - 1, 2);
+            Console.WriteLine(output1);
+            Console.Read();                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+41) Find common elements in two lists and order them in ascending order.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            List<int> input1 = new List<int>() { 8, 4, 3, 5, 7, 9, 6, 1,7, 21 };
+            List<int> input2 = new List<int>() { 8, 3, 8, 11, 9, 15, 1,15 };
+            List<int> output1 = new List<int>();
+            output1 = input1.Intersect(input2).ToList();
+            output1.Sort();        
+            //foreach (var x in output1)
+            //{
+            //    output1.Add(x);
+            //}
+            foreach (var y in output1)
+            {
+                Console.WriteLine(y);
+            }
+          
+            Console.Read();  
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+42) Write a method to add digits from a string .                                                                      
+eg.app123e
+output=1+2+3=6
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int temp, sum = 0;
+            StringBuilder sb = new StringBuilder();
+            string input1 = "app123e";
+            char[] ch = input1.ToCharArray();
+            foreach (char c in ch)
+            {
+                if (char.IsDigit(c))
+                {
+                    sb.Append(c);
+                }
+
+            }
+            string s = sb.ToString();
+            int n = int.Parse(s);
+            while (n > 0)
+            {
+                temp = n % 10;
+                sum = sum + temp;
+                n = n / 10;
+            }
+            Console.WriteLine(sum);
+            Console.Read();  
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+43) If the first letter of the names mentioned in the list match with the char given then                 
+display it as for eg
+input  list(apple,ant,lion)
+char input='a'.
+output:"apple_2","ant_2"
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> str = new List<string>() { "apple", "ant", "are" };
+            char c = 'a';
+            int count = 0;
+            List<string> output = new List<string>();
+            for (int i = 0; i < str.Count(); i++)
+            {
+                if (str[i].Substring(0, 1) == c.ToString())
+                {
+                    count++;
+                }
+            }
+            for (int i = 0; i < str.Count(); i++)
+            {
+                if (str[i].Substring(0, 1) == c.ToString())
+                {
+                    str[i] = str[i] + '_' + count;
+                }
+            }
+            output = str;
+            foreach (var s in output)
+            {
+                if (s.Substring(0, 1) == c.ToString())
+                {
+                    Console.WriteLine(s);
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+44) Health care scenario
+(int input1,char input2,char input3,int input4)
+Input2-MALE/FEMALE INPUT3-CITY/VILLAGE INPUT4-25 to 35
+For eg]
+If(input1 is 1 ,input2 is ‘M’,input3 is ‘c’,input4 is age)
+Then money allotted should not be more than 1,00,000
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+45)reverse a number 
+eg : 123 ==> 321
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int input1 = 123;
+            int output1 = 0,r=0;
+            while (input1 > 0)
+            {
+                 r = input1 % 10;
+                output1 = output1*10 + r;
+                input1 = input1 / 10;
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+46)To find a input2 and input3 is present in input1 . also check if input3 is after input2.
+eg:
+input1:todayisc#exam 
+input2:is
+input3:exam
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1="todayisc#exam";
+            string input2="is";
+            string input3 = "exam";
+            int output1=0;
+            int t1 = input1.IndexOf(input2);
+            int t2 = input1.IndexOf(input3);
+            if (t1 < t2)
+            {
+                output1 = 1;
+            }
+            else
+            {
+                output1 = -1;
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+
+        }
+        
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                                         ///??
+47)datetime format - dd/MM/yyyy
+eg: add 1 year to the given date and find the DAY of that date
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "27/19/1991";
+            string output1 = " ";
+            DateTime dt;
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+            if (res == true)
+            {
+                dt = dt.AddYears(1);
+                output1 = dt.DayOfWeek.ToString();
+            }
+            else
+            {
+                output1 = "-1";
+            }
+
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+48)scenario - ac and non-ac rooms
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int input1 = 2;
+            string input2 = "AC";
+            char input3 = 'H';
+            int output1;
+            int rent;
+            if (input1 < 0)
+            {
+                output1 = 1;
+                Console.WriteLine(output1);
+            }
+            else
+            {
+                if (input2 == "AC")
+                {
+                    switch (input3)
+                    {
+                        case 'C':
+                            rent = 1800 * input1;
+                            output1 = rent;
+                            Console.WriteLine(output1);
+                            break;
+                        case 'H':
+                            rent = 1400 * input1;
+                            output1 = rent;
+                            Console.WriteLine(output1);
+                            break;
+                        case 'B':
+                            rent = 1900 * input1;
+                            output1 = rent;
+                            Console.WriteLine(output1);
+                            break;
+                        default:
+                            output1 = -1;
+                            Console.WriteLine(output1);
+                            break;
+
+                    }
+                }
+                else if (input2 == "NON-AC")
+                {
+                    switch (input3)
+                    {
+                        case 'C':
+                            rent = 800 * input1;
+                            output1 = rent;
+                            Console.WriteLine(output1);
+                            break;
+                        case 'H':
+                            rent = 900 * input1;
+                            output1 = rent;
+                            Console.WriteLine(output1);
+                            break;
+                        case 'B':
+                            rent = 1000 * input1;
+                            output1 = rent;
+                            Console.WriteLine(output1);
+                            break;
+                        default:
+                            output1 = -2;
+                            Console.WriteLine(output1);
+                            break;
+
+                    }
+
+                }
+                else
+                {
+                    output1 = 0;
+                    Console.WriteLine(output1);
+                }
+            }
+		Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+49)input1 is a string. if any character is repeated consecutively 3 times... give the count.
+eg: abcdddefggg
+output1= 2
+eg:ertyyyrere
+output1=1
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "abcsssefggg";
+            int output1 = 0;
+            char[] ch = input1.ToCharArray();
+            for (int i = 0; i < ch.Length-2; i++)
+            {
+                if (ch[i] == ch[i + 1])
+                {
+                    if (ch[i + 1] == ch[i + 2])
+                    {
+                        output1++;
+                    }
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }                     
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+50) check whether all the characters in the given input is distinct .if a char is repeated. . 
+remove. 
+eg : hi this is my book                                                                                   
+output : hi ts my bok
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "hi this is my book";
+            string output1 = " ";
+            StringBuilder sb = new StringBuilder();
+            foreach (char ch in input1)
+            {
+                if (sb.ToString().Contains(ch) && ch != ' ')
+                {
+                }
+                else
+                {
+                    sb.Append(ch);
+                }
+            }
+            output1 = sb.ToString();
+            Console.WriteLine(output1);
+            Console.Read();
+                                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+51) check whether the person is eligible to vote
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "27/09/1999";
+            string output1 = " ";
+            DateTime dt;
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+            if (res == true)
+            {
+                int month = DateTime.Now.Month - dt.Month;
+                int year = DateTime.Now.Year - dt.Year;
+                if (month < 0)
+                {
+                    year = year - 1;
+                    month = month + 12;
+                }
+                if (year > 18)
+                {
+                    output1 = "eligible to vote";
+                }
+                else
+                {
+                    output1 = "not eligible";
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+52)sum of square of even numbers
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input1 = 4567;
+            int output1 = 0,r=0;
+            while (input1 > 0)
+            {
+                r = input1 % 10;
+                if (r % 2 == 0)
+                {
+                   output1= output1 + (r * r);
+                }
+                input1 = input1 / 10;
+            }
+            Console.WriteLine(output1);
+            Console.Read();              
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+53)Find the number of distinct characters in a given string                              
+Eg: Hello World
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "hello world";
+            string output1 = " ";
+            StringBuilder sb = new StringBuilder();
+            foreach (char ch in input1)
+            {
+                if (sb.ToString().Contains(ch) && ch != ' ')
+                {
+                }
+                else
+                {
+                    sb.Append(ch);
+                }
+            }
+            output1 = sb.ToString();
+            Console.WriteLine(output1);
+            Console.Read();       
+                        
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+54)Add days to date
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "27/09/1999";
+            string output1 = " ";
+            DateTime dt;
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+            if (res == true)
+            {
+                dt=dt.AddDays(16);
+                output1=dt.ToString("dd/MM/yyyy");
+            }
+            else
+            {
+                output1="-1";
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+55)Find common elements from 2 given list
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input1 = new List<int>() { 8, 4, 3, 5, 7, 9, 6, 1,7, 21 };
+            List<int> input2 = new List<int>() { 8, 3, 8, 11, 9, 15, 1,15 };
+            List<int> output1 = new List<int>();
+            output1 = input1.Intersect(input2).ToList();
+            foreach (var y in output1)
+            {
+                Console.WriteLine(y);
+            }
+            Console.Read();  
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+56)input1: stock in hand
+input 2: customer order quantity
+input 3: credit (true or false)
+output: Supply, Remaining will be delivered later, cannot supply,...
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+57)BMI scenario
+formula: weight in kgs/(height in mtrs*height in mtrs)
+if(bmi<18.5)
+ output1="underweight"
+if(bmi>=18.5 &&bmi<24.5)
+op=normal weight
+if(bmi>24.5 &&bmi<29.9)
+op=overweight
+if(bmi>30)
+op=obesity
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+58)Student marks Scenario
+Student mark -> input- 5 integers
+if avg>=60 ->First class
+if avg>=50 &&avg<=59 ->Second Class
+if avg>=40 &&avg<=49 -> Third Class
+less than 40 -> failed 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input1 = { 45, 65, 75, 87, 90 };
+            string output1=" ";
+            double a = input1.Average();
+            if(a>=60)
+            {
+                output1="First class";
+            }
+            if(a>=50 &&a<=59)
+            {
+                output1="Second Class";
+            }
+
+            if(a>=40 &&a<=49)
+            {
+                output1="Third Class";
+            }
+            if(a<=40)
+            {
+                output1="fail";
+            }          
+            
+         Console.WriteLine(output1);
+         Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+59)find the common elements that is divisible by 3 in three given list and sort it in desc order
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int count = 0;
+            int c = 0;
+            List<int> input1 = new List<int>() { 1, 2, 3, 6, 9 };
+            List<int> input2 = new List<int>() { 1, 2, 3, 6, 9 };
+            List<int> input3 = new List<int>() { 3, 6, 9 };
+            List<int> output1 = new List<int>();
+            List<int> res = new List<int>();
+            List<int> res1 = new List<int>();
+
+            int q = input1.Count();
+            int w = input2.Count();
+            int e = input3.Count();
+            if (q == 0 || w == 0 || e == 0)
+            {
+                output1.Add(-1);
+                foreach (var y in output1)
+                    Console.WriteLine(y);
+                Console.Read();
+            }
+
+            foreach (var item in input1)
+            {
+                if (item < 0)
+                {
+                    count++;
+                    break;
+                }
+
+            }
+            foreach (var item in input2)
+            {
+                if (item < 0)
+                {
+                    count++;
+                    break;
+                }
+            }
+            foreach (var item in input3)
+            {
+                if (item < 0)
+                {
+                    count++;
+                    break;
+                }
+            }
+
+            foreach (var item in input1)
+            {
+                if (item > 500)
+                {
+                    c++;
+                    break;
+                }
+
+            }
+            foreach (var item in input2)
+            {
+                if (item > 500)
+                {
+                    c++;
+                    break;
+                }
+
+            }
+            foreach (var item in input3)
+            {
+                if (item > 500)
+                {
+                    c++;
+                    break;
+                }
+
+            }
+
+
+            if (count > 0)
+            {
+                output1.Add(-1);
+                foreach (var y in output1)
+                    Console.WriteLine(y);
+                Console.Read();
+            }
+            else if (c > 0)
+            {
+                output1.Add(-2);
+                foreach (var y in output1)
+                    Console.WriteLine(y);
+                Console.Read();
+
+            }
+            else if (count == 0 && c == 0)
+            {
+                res = input1.Intersect(input2).ToList();
+                res1 = res.Intersect(input3).ToList();
+                res1.Sort();
+                res1.Reverse();
+                int k = res1.Count();
+                if (k == 0)
+                {
+                    output1.Add(-4);
+                }
+                else
+                {
+                    foreach (var x in res1)
+                    {
+                        if (x % 3 == 0)
+                        {
+                            output1.Add(x);
+                        }
+                    }
+                }
+                foreach (var x in output1)
+                {
+                    Console.WriteLine(x);
+                }
+                Console.Read();
+            }
+
+
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+60)find the elements in list   that is greater than input1 and sort it in desc order
+
+int input2 =0;
+            List<int> input1 = new List<int>() { 1, 2, 3, 6, 9 };
+            List<int> output1 = new List<int>();
+
+            foreach (int x in input1)
+            {
+                if (x > input2)
+                {
+                    output1.Add(x);
+                }
+            }
+            output1.Sort();
+            output1.Reverse();
+            foreach (var x in output1)
+            {
+                Console.WriteLine(x);
+            }
+            Console.Read();
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+61)checking time format ('hh:mm am' or 'hh:mm pm')
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "27/09/1999 01:25 AM";
+            int output1 = 0;
+            DateTime dt;
+            char[] ch = input1.ToCharArray();
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy h:mm tt", null, System.Globalization.DateTimeStyles.None, out dt);
+            if (res == true)
+            {
+                if ((ch[ch.Length - 2] == 'A' || ch[ch.Length - 2] == 'P') && ch[ch.Length - 1] == 'M')
+                {
+                    output1 = 1;
+
+                }
+            }
+            else
+            {
+                output1 = -1;
+            }   
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+62) count the number of characters in the string arrar
+   eg:i/p: {apple,ball,bat}
+      o/p: 12
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input1 = { "apple", "ball", "bat" };
+            int c=0,count = 0;
+            foreach (string s in input1)
+            {
+                char[] ch = s.ToCharArray();
+                foreach (char i in ch)
+                {
+
+                    if (char.IsLetter(i))
+                    {
+                        c++;
+                    }
+                   
+                }
+                
+            }
+            if (c > 0)
+            {
+                count = count + c;
+            }
+            Console.WriteLine(count);
+            Console.Read();           
+                 
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+63) Check whether the string array contains only numeric values
+   eg: if i/p:{23,24.5"}   =>o/p:1
+   i/p:{"23","one"} =>o/p:-1
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input1 = { "24", "23.5" };
+            int output1 = 0,f=0;
+            foreach (string a in input1)
+            {
+                char[] ch = a.ToCharArray();
+                foreach (char c in ch)
+                {
+                    if (char.IsDigit(c) || c == '.')
+                    {
+                        f = 0;
+
+                    }
+                    else
+                    {
+                        f = 1;
+                        break;
+                    }
+
+                    }
+                }
+            if(f==0)
+            {
+                output1 = 1;
+            }
+            else
+            {
+                output1 = -1;
+            }
+            Console.WriteLine(output1);
+            Console.Read();    
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+64) Extract the extension of a file name
+   eg: i/p:"File.dat" => o/p: "dat"
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "file.dat";
+            string s = input1.Substring(input1.IndexOf(".") + 1);
+            Console.WriteLine(s);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+65) count the vowels in the string array in case there is a tie display the first occurance of the given string
+   eg: "sun rises in the east" => o/p: rises
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "sun rises in the east";
+            int count = 0, temp = 0;
+            string s1 = "aeiouAEIOU";
+            string output1 = " ";
+            char[] ch = s1.ToCharArray();
+            StringBuilder sb = new StringBuilder();
+            string[] str = input1.Split(' ');
+            foreach (var i in str)
+            {
+                count = 0;
+                foreach (var j in i)
+                {
+
+                    if (s1.Contains(j))
+                    {
+                        count++;
+                    }
+                }
+                if (count > temp)
+                {
+                    temp = count;
+                    output1 = i;
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+66) Validate a password 
+   Bussiness Rules:
+   *should not start with digit or spl character
+   *should not end with splchararcter
+   *must contain any of these three atleastonce('@','#','_')
+   *must contain atleast one letter
+   *must contain atleast one digit
+   *length should be minimum 8 character
+   eg:i/p:"ashok_23" o/p:1
+      i/p:"1991_23"  o/p:-1
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           string input1 = "santhu@2792";
+           int output1 = 0;
+            if (input1.Length >= 8)
+            {
+                char[] ch = input1.ToCharArray();
+                if (char.IsLetter(ch.ElementAt(0)) && char.IsLetterOrDigit(ch.ElementAt(ch.Length - 1)))
+                {
+                    int splchar = 0;
+                    for (int i = 0; i < ch.Length - 2; i++)
+                    {
+                        if (char.IsLetterOrDigit(ch.ElementAt(i)))
+                        {
+
+                        }
+                        else if (ch.ElementAt(i) == '#' || ch.ElementAt(i)== '_' || ch.ElementAt(i)== '@')
+                            splchar++;
+                    }
+                    if (splchar >= 1)
+                    {
+                        output1 = 1;
+                    }
+                }
+                else
+                    output1 = -1;           
+            }
+            Console.WriteLine(output1);
+            Console.Read();      
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+67) From the given string form a new word
+   inputs(string input1 and int input2)
+   eg: i/p:"california",3 => o/p= "calnia"
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "california";
+            int input2 = 3;
+            string output;
+            if (input1.Count() > 2 * input2)
+            {
+                output = input1.Substring(0, input2) + input1.Substring(input1.Count() - input2);
+            }
+            else
+                output = "-1";
+            Console.WriteLine(output);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+68) Count the character. (For eg:count the char o)
+	i/p:Hello Welcome TO world of cognizant
+	o/p:6
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "Hello Welcome TO world of cognizant";
+            char input2 = 'o';
+            int output1=0;
+            input1 = input1.ToLower();
+            char[] ch=input1.ToCharArray();
+            for(int i=0;i<ch.Length;i++)
+            {
+                if (ch[i] == input2)
+                {
+                    output1++;
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+69) Fibonacci series
+	Eg:i/p=5
+	o/p:7(0+1+1+2+3)
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int a = -1, b = 1, c = 0, i,sum = 0;
+            int input1 = 5;
+            for (i = 1; i <= input1; i++)
+            {
+                c = a + b;
+               // Console.WriteLine(c); to get the series of fib
+                sum = sum + c;
+                a = b;
+                b = c;
+            }
+            Console.WriteLine(sum);
+            Console.Read();
+        }                     
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+70) Check whether the vowels are in correct order in the given string.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int output1 = 0;
+            string input1 = "sanetijogu";
+            StringBuilder sb = new StringBuilder();
+            
+            char[] ch = input1.ToCharArray();
+            for (int i = 0; i < ch.Length; i++)
+            {
+                if (ch[i] == 'a' || ch[i] == 'e' || ch[i] == 'i' || ch[i] == 'o' || ch[i] == 'u')
+                {
+                    sb.Append(ch[i]);
+                }
+                if (sb.ToString() == "aeiou")
+                {
+                    output1 = 1;
+                }
+                else
+                {
+                    output1 = -1;
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+71) Initial 
+	Eg:
+	i/p: john Williams
+	o/p: Williams ,j
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "john Willams";
+            string output = " ";
+            string output1 = " ";
+            StringBuilder sb = new StringBuilder();
+            sb.Append(input1.Substring(input1.IndexOf(' ')));
+            sb.Append(',');
+            sb.Append(' ');
+            sb.Append(input1.Substring(0,1));
+            output = sb.ToString();
+            output1 = output.TrimStart();
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+72)find common elements in 2 given lists and store it in the output list.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input1 = new List<int>() { 8, 4, 3, 5, 7, 9, 6, 1,7, 21 };
+            List<int> input2 = new List<int>() { 8, 3, 8, 11, 9, 15, 1,15 };
+            List<int> output1 = new List<int>();
+            output1 = input1.Intersect(input2).ToList();
+            foreach (var y in output1)
+            {
+                Console.WriteLine(y);
+            }
+            Console.Read();  
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+73)car parking scenario:2 inputs are given as string that should be converted to datetime format and calculate the hours 
+and calculate the charges for car parking.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input1 = "1991/09/12 09:45:56";
+            string input2 = "1991/09/12 10:45:57";
+            double output1 = 0;
+            DateTime dt;
+            DateTime dt1;
+            double duration = 0;
+            bool res = DateTime.TryParseExact(input1, "yyyy/MM/dd hh:mm:ss", null, System.Globalization.DateTimeStyles.None, out dt);
+            bool res1 = DateTime.TryParseExact(input2, "yyyy/MM/dd hh:mm:ss", null, System.Globalization.DateTimeStyles.None, out dt1);
+            if (res == false || res1 == false)
+            {
+                output1 = -1;
+            }
+            else
+            {
+                if (dt > dt1)
+                {
+                    output1 = -2;
+                }
+                else
+                {
+                    duration = Math.Ceiling(dt1.Subtract(dt).TotalHours);
+                    if (duration > 24)
+                    {
+                        output1 = -3;
+                    }
+                    else if (duration <= 3)
+                    {
+                        output1 = 2;
+                    }
+                    else if (duration > 3 && duration <= 24)
+                    {
+                        output1 = 2 + (0.50 * (duration - 3));
+                    }
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+74)voting scenario.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "27/09/1999";
+            int output1 = 0;
+            DateTime dt;
+            bool res = DateTime.TryParseExact(input1, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt);
+            if (res == true)
+            {
+                int month = DateTime.Now.Month - dt.Month;
+                int year = DateTime.Now.Year - dt.Year;
+                if (month < 0)
+                {
+                    year = year - 1;
+                    month = month + 12;
+                }
+                if (year > 18)
+                {
+                    output1 = 1;
+                }
+                else
+                {
+                    output1 = -1;
+                }
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+75)color code format checking using regex
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            string input1 = "#FF85HH";
+            int output1 = 0;
+            Regex reg = new Regex(@"^([#])+([A-F0-9]{6})+$");
+            if (reg.IsMatch(input1))
+            {
+                output1 = 1;
+            }
+            else
+            {
+                output1 = -1;
+            }
+            Console.WriteLine(output1);
+            Console.Read();
+        }
+        
+    }
+}

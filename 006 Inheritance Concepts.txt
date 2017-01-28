@@ -1,0 +1,943 @@
+1. 
+The Customer class can be defined in a single class. But there are different kinds of room like lodging room, party hall or conference hall. Each type may have different requirements, but all belongs to room.
+ 
+Create a class Hotel with the following data members:
+    name, hotelId, address and roomList
+and member functions
+ 
+AddRoom – with room object as argument
+Display
+ 
+After creating the Hotel class, we need to design the Room class. The addRoom() method in the hotel class should add the new room add the room object to the room list.
+ 
+The Room class is defined as below,
+ 
+Create a class Room with the following data members:
+    id, rate, hours;
+and a constructor with all the data members as arguments.
+ 
+The rate is defined per unit time (as defined in 'hours')
+The hours is the unit time for which the rate holds.
+(So the total cost can be calculated as rate*totalTime/hour )
+ 
+ Create a class HotelRoom which extends Room with data members
+    roomType, wifi
+ 
+ Create a class Hall which extends Room with data members
+    capacity, soundSystem
+ 
+ Create a class PartyHall which extends Hall with data members
+type;
+'type' can be Single, Double or Delux.
+ 
+amenities;
+cost for extra amenities
+Create a class ConferenceHall which extends Hall with data members
+    wifiHall, projector;
+ 
+Define rate as following:
+For hotel room:
+Single -1000 for 24 hours
+Double – 1500 for 24hours
+Delux – 2000 for 24hours
+For Party Hall – 200 per hour
+For Conference Hall – 250 per hour
+ 
+Don't worry about the amenities cost and extra cost for other facilities like wifi, AC, etc..
+ 
+ 
+Sample Input and Output:
+ 
+Enter the Hotel Details
+Enter the Hotel name
+taj
+Enter the Hotel Location
+cbe
+Enter the Room name
+1.Hotel Room
+2.Hall
+1
+Enter the Room Type
+1.Single
+2.Double
+3.Delux
+1
+Need WiFi ??(true/false)
+true
+Do you want to add another room?(y/n)
+y
+Enter the Room name
+1.Hotel Room
+2.Hall
+2
+Enter the Hall Type
+1.Party Hall
+2.Conference Hall
+2
+Enter the Capacity
+100
+Need soundSystem ??(true/false)
+true
+Need WiFi ??(true/false)
+true
+Need Projector ??(true/false)
+true
+Do you want to add another room?(y/n)
+y
+Enter the Room name
+1.Hotel Room
+2.Hall
+2
+Enter the Hall Type
+1.Party Hall
+2.Conference Hall
+2
+Enter the Capacity
+50
+Need soundSystem ??(true/false)
+true
+Need WiFi ??(true/false)
+false
+Need Projector ??(true/false)
+true
+Do you want to add another room?(y/n)
+n
+Hotel Room Details :
+Lodge Room
+Room ID : 1
+Room Type : Single
+wifi : true
+Room Rate : 1000
+ 
+Conference Hall
+Room ID : 2
+Capacity : 100
+Sound System : true
+Wifi : true
+Projector : true
+Room Rate : 250
+ 
+Conference Hall
+Room ID : 3
+Capacity : 50
+Sound System : true
+Wifi : false
+Projector : true
+Room Rate : 250
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace LoopingStat
+{
+    class Hotel
+    {
+        //string name, hotelId, address;
+
+        List<HotelRoom> hotelRoom = new List<HotelRoom>();
+
+        List<PartyHall> partyHall = new List<PartyHall>();
+
+        List<ConferenceHall> conferenceHall = new List<ConferenceHall>();
+
+        public void AddRoom(HotelRoom obj)
+        {
+            hotelRoom.Add(obj);
+        }
+        public void AddRoom(PartyHall obj)
+        {
+            partyHall.Add(obj);
+        }
+        public void AddRoom(ConferenceHall obj)
+        {
+            conferenceHall.Add(obj);
+        }
+        public void Display()
+        {
+            Console.WriteLine("Hotel Room Details :");
+            foreach (HotelRoom hr in hotelRoom)
+            {
+                Console.WriteLine("Lodge Room");
+                Console.WriteLine("Room ID : " + hr.id);
+                if (hr.roomType == 1)
+                {
+                    Console.WriteLine("Room Type : Single");
+                }
+                else if (hr.roomType == 2)
+                {
+                    Console.WriteLine("Room Type : Double");
+                }
+                else
+                {
+                    Console.WriteLine("Room Type : Delux");
+                }
+                if (hr.wifi)
+                {
+                    Console.WriteLine("wifi : true");
+                }
+                else
+                {
+                    Console.WriteLine("wifi : false");
+                }
+                Console.WriteLine("Room Rate : " + hr.rate);
+
+            }
+            foreach (ConferenceHall ch in conferenceHall)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Conference Hall");
+                Console.WriteLine("Room ID : " + ch.id);
+                Console.WriteLine("Capacity : " + ch.capacity);
+                if (ch.soundSystem)
+                {
+                    Console.WriteLine("Sound System : true");
+                }
+                else
+                {
+                    Console.WriteLine("Sound System : false");
+                }
+                if (ch.wifiHall)
+                {
+                    Console.WriteLine("Wifi : true");
+                }
+                else
+                {
+                    Console.WriteLine("Wifi : false");
+                }
+                if (ch.projector)
+                {
+                    Console.WriteLine("Projector : true");
+                }
+                else
+                {
+                    Console.WriteLine("Projector : false");
+                }
+                Console.WriteLine("Room Rate : " + ch.rate);
+            }
+            foreach (PartyHall ph in partyHall)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Party Hall");
+                Console.WriteLine("Room ID : " + ph.id);
+                Console.WriteLine("Capacity : " + ph.capacity);
+                if (ph.soundSystem)
+                {
+                    Console.WriteLine("Sound System : true");
+                }
+                else
+                {
+                    Console.WriteLine("Sound System : false");
+                }
+                Console.WriteLine("Type of Party : " + ph.type);
+                Console.WriteLine("Amenties : " + ph.amenities);
+                Console.WriteLine("Room Rate : " + ph.rate);
+            }
+        }
+        static void Main(string[] args)
+        {
+            Hotel hotel = new Hotel();
+            int roomName, roomType, hallType, hallCapacity, roomCharge, roomId = 0, amentiesCost = 0;
+            bool roomWifi, soundSystem, hallWifi, projector;
+            char ch = 'y';
+            string partyName;
+            Console.WriteLine("Enter the Hotel Details");
+            Console.WriteLine("Enter the Hotel name");
+            //hotel.name  = Console.ReadLine();
+            Console.ReadLine();
+            Console.WriteLine("Enter the Hotel Location");
+            //hotel.address = Console.ReadLine();
+            Console.ReadLine();
+            HotelRoom hrObj = new HotelRoom();
+            ConferenceHall chObj = new ConferenceHall();
+            PartyHall partyObj = new PartyHall();
+            do
+            {
+                roomId++;
+                Console.WriteLine("Enter the Room name");
+                Console.WriteLine("1.Hotel Room");
+                Console.WriteLine("2.Hall");
+                roomName = Convert.ToInt32(Console.ReadLine());
+                if (roomName == 1)
+                {
+                    Console.WriteLine("Enter the Room Type");
+                    Console.WriteLine("1.Single");
+                    Console.WriteLine("2.Double");
+                    Console.WriteLine("3.Delux");
+                    roomType = Convert.ToInt32(Console.ReadLine());
+                    if (roomType == 1)
+                    {
+                        roomCharge = 1000;
+                    }
+                    else if (roomType == 2)
+                    {
+                        roomCharge = 1500;
+                    }
+                    else
+                    {
+                        roomCharge = 2000;
+                    }
+                    Console.WriteLine("Need WiFi ??(true/false)");
+                    roomWifi = Convert.ToBoolean(Console.ReadLine());
+                    hrObj = new HotelRoom(roomType, roomWifi, roomId, roomCharge, 24);
+                    hotel.AddRoom(hrObj);
+                }
+                else
+                {
+                    Console.WriteLine("Enter the Hall Type");
+                    Console.WriteLine("1.Party Hall");
+                    Console.WriteLine("2.Conference Hall");
+                    hallType = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter the Capacity");
+                    hallCapacity = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Need soundSystem ??(true/false)");
+                    soundSystem = Convert.ToBoolean(Console.ReadLine());
+                    if (hallType == 2)
+                    {
+                        Console.WriteLine("Need WiFi ??(true/false)");
+                        hallWifi = Convert.ToBoolean(Console.ReadLine());
+                        Console.WriteLine("Need Projector ??(true/false)");
+                        projector = Convert.ToBoolean(Console.ReadLine());
+                        roomCharge = 250;
+                        chObj = new ConferenceHall(hallWifi, projector, hallCapacity, soundSystem, roomId, roomCharge, 0);
+                        hotel.AddRoom(chObj);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter the Party Name");
+                        partyName = Console.ReadLine();
+                        Console.WriteLine("Enter the Amenities Cost");
+                        amentiesCost = Convert.ToInt32(Console.ReadLine());
+                        partyObj = new PartyHall(amentiesCost, partyName, hallCapacity, soundSystem, roomId, 200, 0);
+                        hotel.AddRoom(partyObj);
+                    }
+                }
+                Console.WriteLine("Do you want to add another room?(y/n)");
+                ch = Convert.ToChar(Console.ReadLine());
+
+            } while (ch == 'y');
+            hotel.Display();
+        }
+    }
+    class Room
+    {
+        public int id, rate, hours;
+        public Room()
+        {
+            id = 0;
+            rate = 0;
+            hours = 0;
+        }
+        public Room(int id, int rate, int hours)
+        {
+            this.id = id;
+            this.rate = rate;
+            this.hours = hours;
+        }
+    }
+    class HotelRoom : Room
+    {
+        public int roomType;
+        public bool wifi;
+        public HotelRoom()
+        {
+            roomType = 0;
+            wifi = false;
+        }
+        public HotelRoom(int roomType, bool wifi, int id, int rate, int hours)
+            : base(id, rate, hours)
+        {
+            this.roomType = roomType;
+            this.wifi = wifi;
+        }
+    }
+    class Hall : Room
+    {
+        public int capacity;
+        public bool soundSystem;
+        public Hall()
+        {
+            capacity = 0;
+            soundSystem = false;
+        }
+        public Hall(int capacity, bool soundSystem, int id, int rate, int hours)
+            : base(id, rate, hours)
+        {
+            this.capacity = capacity;
+            this.soundSystem = soundSystem;
+        }
+    }
+    class PartyHall : Hall
+    {
+        public string type;
+        public int amenities;
+        public PartyHall()
+        {
+            type = "";
+            amenities = 0;
+        }
+        //double amenities;
+        public PartyHall(int amenities, string type, int capacity, bool soundSystem, int id, int rate, int hours)
+            : base(capacity, soundSystem, id, rate, hours)
+        {
+            this.type = type;
+            this.amenities = amenities;
+        }
+
+    }
+    class ConferenceHall : Hall
+    {
+        public bool wifiHall, projector;
+        public ConferenceHall()
+        {
+            wifiHall = false;
+            projector = false;
+        }
+        public ConferenceHall(bool wifiHall, bool projector, int capacity, bool soundSystem, int id, int rate, int hours)
+            : base(capacity, soundSystem, id, rate, hours)
+        {
+            this.wifiHall = wifiHall;
+            this.projector = projector;
+        }
+    }
+}
+
+
+2. 
+
+Using Inheritance we have created different type of rooms in the previous exercise. In this exercise lets reserve a room for the customer.
+
+The problem flow is same as the reservation concept in the previous session. Also refer previous session for customer details.
+
+Sample Input and Output:
+Enter the Hotel Details
+Enter the Hotel name
+Monarch
+Enter the Hotel Location
+Ooty
+Enter the Room name
+1.Hotel Room
+2.Hall
+1
+Enter the Room Type
+1.Single
+2.Double
+3.Delux
+1
+Need WiFi ??(true/false)
+true
+Do you want to add another room?(y/n)
+y
+Enter the Room name
+1.Hotel Room
+2.Hall
+1
+Enter the Room Type
+1.Single
+2.Double
+3.Delux
+1
+Need WiFi ??(true/false)
+true
+Do you want to add another room?(y/n)
+n
+Hotel Room Details :
+Lodge Room
+Room ID : 1
+Room Type : Single
+wifi : true
+Room Rate : 1000
+
+Lodge Room
+Room ID : 2
+Room Type : Single
+wifi : true
+Room Rate : 1000
+
+Customer Registration:
+
+Enter the customer details:
+Enter the first name:
+Chris
+Enter the last name:
+Angels
+Enter the contact number:
+987654321
+Enter the e-mail id:
+chris@gmail.com
+Enter the proof type:
+License
+Enter the proof id:
+1234
+Thank you for registering.
+The customer details are as follows
+The customer details are:
+First Name : Chris
+Last Name : Angels
+Contact Number : 987654321
+E-Mail : chris@gmail.com
+Proof Type : License
+Proof ID : 1234
+Enter the Room name
+1.Hotel Room
+2.Hall
+1
+Enter the Room Type
+1.Single
+2.Double
+3.Delux
+1
+Wi-Fi Service (true/false):
+true
+AVAILABILITY CHECK
+Room Number :1
+Enter the number of days :
+2
+Enter today's date :
+23/12/1993
+Enter check in date :
+24/12/1993
+Booking Date : 23/12/1993
+Check in Date : 24/12/1993
+No of Days : 2
+Room Rate : 2000
+Wifi Charges ( @ 100 per day ) : 200
+Vat 10 % : 240
+
+Total : 2640
+
+
+soln - 
+
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace LoopingStat
+{
+    class Hotel
+    {
+        //string name, hotelId, address;
+
+        List<HotelRoom> hotelRoom = new List<HotelRoom>();
+
+        List<PartyHall> partyHall = new List<PartyHall>();
+
+        List<ConferenceHall> conferenceHall = new List<ConferenceHall>();
+
+        public void AddRoom(HotelRoom obj)
+        {
+            hotelRoom.Add(obj);
+        }
+        public void AddRoom(PartyHall obj)
+        {
+            partyHall.Add(obj);
+        }
+        public void AddRoom(ConferenceHall obj)
+        {
+            conferenceHall.Add(obj);
+        }
+        public void Display()
+        {
+            Console.WriteLine("Hotel Room Details :");
+            foreach (HotelRoom hr in hotelRoom)
+            {
+                Console.WriteLine("Lodge Room");
+                Console.WriteLine("Room ID : " + hr.id);
+                if (hr.roomType == 1)
+                {
+                    Console.WriteLine("Room Type : Single");
+                }
+                else if (hr.roomType == 2)
+                {
+                    Console.WriteLine("Room Type : Double");
+                }
+                else
+                {
+                    Console.WriteLine("Room Type : Delux");
+                }
+                if (hr.wifi)
+                {
+                    Console.WriteLine("wifi : true");
+                }
+                else
+                {
+                    Console.WriteLine("wifi : false");
+                }
+                Console.WriteLine("Room Rate : " + hr.rate);
+                Console.WriteLine();
+
+            }
+            foreach (ConferenceHall ch in conferenceHall)
+            {
+                Console.WriteLine("Conference Hall");
+                Console.WriteLine("Room ID : " + ch.id);
+                Console.WriteLine("Capacity : " + ch.capacity);
+                if (ch.soundSystem)
+                {
+                    Console.WriteLine("Sound System : true");
+                }
+                else
+                {
+                    Console.WriteLine("Sound System : false");
+                }
+                if (ch.wifiHall)
+                {
+                    Console.WriteLine("Wifi : true");
+                }
+                else
+                {
+                    Console.WriteLine("Wifi : false");
+                }
+                if (ch.projector)
+                {
+                    Console.WriteLine("Projector : true");
+                }
+                else
+                {
+                    Console.WriteLine("Projector : false");
+                }
+                Console.WriteLine("Room Rate : " + ch.rate);
+                Console.WriteLine();
+            }
+            foreach (PartyHall ph in partyHall)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Party Hall");
+                Console.WriteLine("Room ID : " + ph.id);
+                Console.WriteLine("Capacity : " + ph.capacity);
+                if (ph.soundSystem)
+                {
+                    Console.WriteLine("Sound System : true");
+                }
+                else
+                {
+                    Console.WriteLine("Sound System : false");
+                }
+                Console.WriteLine("Type of Party : " + ph.type);
+                Console.WriteLine("Amenties : " + ph.amenities);
+                Console.WriteLine("Room Rate : " + ph.rate);
+            }
+        }
+        public int CheckAvailability(int roomType, bool roomWifi)
+        {
+            foreach (HotelRoom hr in hotelRoom)
+            {
+                if (roomType == hr.roomType && roomWifi == hr.wifi)
+                {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        //public void CheckAvailability(PartyHall obj)
+        //{
+
+        //}
+        public int CheckAvailability(int capacity, bool sound, bool wifi)
+        {
+            foreach (ConferenceHall ch in conferenceHall)
+            {
+                if (capacity <= ch.capacity && ch.soundSystem == sound && ch.wifiHall == wifi)
+                {
+                    return ch.id;
+                }
+            }
+            return 0;
+        }
+        static void Main(string[] args)
+        {
+            Hotel hotel = new Hotel();
+            int roomName, roomType, hallType, hallCapacity, roomCharge, roomId = 0, amentiesCost = 0, nDays, totalCost = 0, nHours = 0;
+            bool roomWifi, soundSystem, hallWifi, projector;
+            char ch = 'y';
+            string partyName, todayDate, checkInDate;
+            Console.WriteLine("Enter the Hotel Details");
+            Console.WriteLine("Enter the Hotel name");
+            //hotel.name  = Console.ReadLine();
+            Console.ReadLine();
+            Console.WriteLine("Enter the Hotel Location");
+            //hotel.address = Console.ReadLine();
+            Console.ReadLine();
+            HotelRoom hrObj = new HotelRoom();
+            ConferenceHall chObj = new ConferenceHall();
+            PartyHall partyObj = new PartyHall();
+            do
+            {
+                roomId++;
+                Console.WriteLine("Enter the Room name");
+                Console.WriteLine("1.Hotel Room");
+                Console.WriteLine("2.Hall");
+                roomName = Convert.ToInt32(Console.ReadLine());
+                if (roomName == 1)
+                {
+                    Console.WriteLine("Enter the Room Type");
+                    Console.WriteLine("1.Single");
+                    Console.WriteLine("2.Double");
+                    Console.WriteLine("3.Delux");
+                    roomType = Convert.ToInt32(Console.ReadLine());
+                    if (roomType == 1)
+                    {
+                        roomCharge = 1000;
+                    }
+                    else if (roomType == 2)
+                    {
+                        roomCharge = 1500;
+                    }
+                    else
+                    {
+                        roomCharge = 2000;
+                    }
+                    Console.WriteLine("Need WiFi ??(true/false)");
+                    roomWifi = Convert.ToBoolean(Console.ReadLine());
+                    hrObj = new HotelRoom(roomType, roomWifi, roomId, roomCharge, 24);
+                    hotel.AddRoom(hrObj);
+                }
+                else
+                {
+                    Console.WriteLine("Enter the Hall Type");
+                    Console.WriteLine("1.Party Hall");
+                    Console.WriteLine("2.Conference Hall");
+                    hallType = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter the Capacity");
+                    hallCapacity = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Need soundSystem ??(true/false)");
+                    soundSystem = Convert.ToBoolean(Console.ReadLine());
+                    if (hallType == 2)
+                    {
+                        Console.WriteLine("Need WiFi ??(true/false)");
+                        hallWifi = Convert.ToBoolean(Console.ReadLine());
+                        Console.WriteLine("Need Projector ??(true/false)");
+                        projector = Convert.ToBoolean(Console.ReadLine());
+                        roomCharge = 250;
+                        chObj = new ConferenceHall(hallWifi, projector, hallCapacity, soundSystem, roomId, roomCharge, 0);
+                        hotel.AddRoom(chObj);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter the Party Name");
+                        partyName = Console.ReadLine();
+                        Console.WriteLine("Enter the Amenities Cost");
+                        amentiesCost = Convert.ToInt32(Console.ReadLine());
+                        partyObj = new PartyHall(amentiesCost, partyName, hallCapacity, soundSystem, roomId, 200, 0);
+                        hotel.AddRoom(partyObj);
+                    }
+                }
+                Console.WriteLine("Do you want to add another room?(y/n)");
+                ch = Convert.ToChar(Console.ReadLine());
+
+            } while (ch == 'y');
+            hotel.Display();
+            Customer customerObj = new Customer();
+            customerObj.Register();
+            Console.WriteLine("Enter the Room name");
+            Console.WriteLine("1.Hotel Room");
+            Console.WriteLine("2.Hall");
+            roomName = Convert.ToInt32(Console.ReadLine());
+            if (roomName == 1)
+            {
+                Console.WriteLine("Enter the Room Type");
+                Console.WriteLine("1.Single");
+                Console.WriteLine("2.Double");
+                Console.WriteLine("3.Delux");
+                roomType = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Wi-Fi Service (true/false):");
+                roomWifi = Convert.ToBoolean(Console.ReadLine());
+                Console.WriteLine("AVAILABILITY CHECK");
+                int num = hotel.CheckAvailability(roomType, roomWifi);
+                if (num > 0)
+                {
+                    Console.WriteLine("Room Number :" + num);
+                    Console.WriteLine("Enter the number of days :");
+                    nDays = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter today's date :");
+                    todayDate = Console.ReadLine();
+                    Console.WriteLine("Enter check in date :");
+                    checkInDate = Console.ReadLine();
+                    Console.WriteLine("Booking Date : " + todayDate);
+                    Console.WriteLine("Check in Date : " + checkInDate);
+                    Console.WriteLine("No of Days : " + nDays);
+                    if (roomType == 1)
+                    {
+                        roomCharge = 1000;
+                    }
+                    else if (roomType == 2)
+                    {
+                        roomCharge = 1500;
+                    }
+                    else
+                    {
+                        roomCharge = 2000;
+                    }
+                    Console.WriteLine("Room Rate : " + roomCharge * nDays);
+                    totalCost = totalCost + roomCharge * nDays;
+                    Console.WriteLine("Wifi Charges ( @ 100 per day ) : " + 100 * nDays);
+                    totalCost = totalCost + 200 * nDays;
+                    Console.WriteLine("Vat 10 % : " + (totalCost * 10) / 100);
+                    totalCost = totalCost + (totalCost * 10) / 100;
+                    Console.WriteLine();
+                    Console.WriteLine("Total : " + totalCost);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Enter the Hall Type");
+                Console.WriteLine("1.Party Hall");
+                Console.WriteLine("2.Conference Hall");
+                hallType = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the Capacity");
+                hallCapacity = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Need soundSystem ??(true/false)");
+                soundSystem = Convert.ToBoolean(Console.ReadLine());
+                if (hallType == 2)
+                {
+                    Console.WriteLine("Need WiFi ??(true/false)");
+                    hallWifi = Convert.ToBoolean(Console.ReadLine());
+                    Console.WriteLine("Need Projector ??(true/false)");
+                    projector = Convert.ToBoolean(Console.ReadLine());
+                    int num = hotel.CheckAvailability(hallCapacity, soundSystem, hallWifi);
+                    if (num > 0)
+                    {
+                        Console.WriteLine("Room Number :" + num);
+                        Console.WriteLine("Enter the number of hours :");
+                        nHours = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter today's date :");
+                        todayDate = Console.ReadLine();
+                        Console.WriteLine("Enter check in date :");
+                        checkInDate = Console.ReadLine();
+                        Console.WriteLine("Booking Date : " + todayDate);
+                        Console.WriteLine("Check in Date :" + checkInDate);
+                        Console.WriteLine("No of Hours : " + nHours);
+                        Console.WriteLine("Room Rate : " + nHours * 250);
+                        totalCost = totalCost + nHours * 250;
+                        Console.WriteLine("Wifi Charges ( @ 100 per hour ) : 0");
+                        Console.WriteLine("Projector charges @ 100 per hour: " + nHours * 100);
+                        totalCost = totalCost + nHours * 100;
+                        Console.WriteLine("Vat 10 % : " + (totalCost * 10) / 100);
+                        totalCost = totalCost + (totalCost * 10) / 100;
+                        Console.WriteLine();
+                        Console.WriteLine("Total : " + totalCost);
+                    }
+                }
+            }
+        }
+    }
+    class Room
+    {
+        public int id, rate, hours;
+        public bool available;
+        public Room()
+        {
+            id = 0;
+            rate = 0;
+            hours = 0;
+            available = true;
+        }
+        public Room(int id, int rate, int hours)
+        {
+            this.id = id;
+            this.rate = rate;
+            this.hours = hours;
+            this.available = true;
+        }
+    }
+    class HotelRoom : Room
+    {
+        public int roomType;
+        public bool wifi;
+        public HotelRoom()
+        {
+            roomType = 0;
+            wifi = false;
+        }
+        public HotelRoom(int roomType, bool wifi, int id, int rate, int hours)
+            : base(id, rate, hours)
+        {
+            this.roomType = roomType;
+            this.wifi = wifi;
+        }
+    }
+    class Hall : Room
+    {
+        public int capacity;
+        public bool soundSystem;
+        public Hall()
+        {
+            capacity = 0;
+            soundSystem = false;
+        }
+        public Hall(int capacity, bool soundSystem, int id, int rate, int hours)
+            : base(id, rate, hours)
+        {
+            this.capacity = capacity;
+            this.soundSystem = soundSystem;
+        }
+    }
+    class PartyHall : Hall
+    {
+        public string type;
+        public int amenities;
+        public PartyHall()
+        {
+            type = "";
+            amenities = 0;
+        }
+        //double amenities;
+        public PartyHall(int amenities, string type, int capacity, bool soundSystem, int id, int rate, int hours)
+            : base(capacity, soundSystem, id, rate, hours)
+        {
+            this.type = type;
+            this.amenities = amenities;
+        }
+
+    }
+    class ConferenceHall : Hall
+    {
+        public bool wifiHall, projector;
+        public ConferenceHall()
+        {
+            wifiHall = false;
+            projector = false;
+        }
+        public ConferenceHall(bool wifiHall, bool projector, int capacity, bool soundSystem, int id, int rate, int hours)
+            : base(capacity, soundSystem, id, rate, hours)
+        {
+            this.wifiHall = wifiHall;
+            this.projector = projector;
+        }
+    }
+    class Customer
+    {
+        public void Register()
+        {
+            Console.WriteLine("Customer Registration:");
+            Console.WriteLine();
+            Console.WriteLine("Enter the customer details:");
+            Console.WriteLine("Enter the first name:");
+            string first = Console.ReadLine();
+            Console.WriteLine("Enter the last name:");
+            string last = Console.ReadLine();
+            Console.WriteLine("Enter the contact number:");
+            long phone = Convert.ToInt64(Console.ReadLine());
+            Console.WriteLine("Enter the e-mail id:");
+            string email = Console.ReadLine();
+            Console.WriteLine("Enter the proof type:");
+            string proof_Type = Console.ReadLine();
+            Console.WriteLine("Enter the proof id:");
+            string proofId = Console.ReadLine();
+            Console.WriteLine("Thank you for registering.");
+            Console.WriteLine("The customer details are as follows");
+            Console.WriteLine("The customer details are:");
+            Console.WriteLine("First Name : " + first);
+            Console.WriteLine("Last Name : " + last);
+            Console.WriteLine("Contact Number : " + phone);
+            Console.WriteLine("E-Mail : " + email);
+            Console.WriteLine("Proof Type : " + proof_Type);
+            Console.WriteLine("Proof ID : " + proofId);
+        }
+    }
+}
